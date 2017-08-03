@@ -1,4 +1,0 @@
-#Thu Aug 03 10:40:37 IDT 2017
-base.0=/Users/igoodis/EasyMath_workspace/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
-renamed.0=classes.dex
-file.0=/Users/igoodis/EasyMath_workspace/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

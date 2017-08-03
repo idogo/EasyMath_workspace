@@ -16,12 +16,12 @@
         "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/drawable-hdpi/green.png"
     },
     {
-        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
-        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/drawable-hdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/drawable-hdpi/profile.png",
         "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/drawable-hdpi/profile.png"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/drawable-hdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/drawable-hdpi/book.png",

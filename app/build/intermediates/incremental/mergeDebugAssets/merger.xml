@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="output"><source path="/Users/igoodis/.android/build-cache/7bcba2b9b61ecde6381caba68a74d07edfca2e65/output/assets"/></dataSet><dataSet config="main"><source path="/Users/igoodis/EasyMath_workspace/app/src/main/assets"/><source path="/Users/igoodis/EasyMath_workspace/app/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/igoodis/EasyMath_workspace/app/src/debug/assets"/></dataSet></merger>

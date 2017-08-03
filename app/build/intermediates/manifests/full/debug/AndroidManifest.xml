@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="easymath.first.activities.MainActivity"
+            android:name="com.easymath.activities.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -29,111 +29,96 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="easymath.first.activities.MenuActivityenuActivity"
+            android:name="com.easymath.activities.menus.MenuActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.learn.LearningActivity"
+            android:name="com.easymath.activities.learn.LearningActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.learn.LearningAddActivitytivity"
+            android:name="com.easymath.activities.learn.LearningAddActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.learn.LearningSubActivitygSubActivity"
+            android:name="com.easymath.activities.learn.LearningSubActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.learn.LearningMulActivitytivity"
+            android:name="com.easymath.activities.train.TrainingActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.learn.LearningDivideActivityningDivideActivity"
+            android:name="com.easymath.activities.DifficultyActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.train.TrainingActivity"
+            android:name="com.easymath.activities.train.TrainScreenActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.DifficultyActivity"
+            android:name="com.easymath.activities.menus.TeacherMenuActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.train.TrainingAddActivitytivity"
+            android:name="com.easymath.activities.test.TestScreenActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.train.TrainScreenActivitytivity"
+            android:name="com.easymath.activities.test.TestActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.TeacherMenuActivityst.TeacherMenuActivity"
+            android:name="com.easymath.activities.AddExScreenActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.TestScreenActivity"
+            android:name="com.easymath.activities.ConnectStudentsActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.TestActivity"
+            android:name="com.easymath.activities.ManageStudentsActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.AddExScreenActivityeenActivity"
+            android:name="com.easymath.activities.ProfileActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.ConnectStudentsActivity"
+            android:name="com.easymath.activities.QuestionExplanationActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.ManageStudentsActivity"
+            android:name="com.easymath.activities.test.TestEndActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.ProfileActivity"
+            android:name="com.easymath.activities.HelpActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="easymath.first.activities.QuestionExplanationActivity"
-            android:configChanges="orientation"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="easymath.first.TestEndActivity"
-            android:configChanges="orientation"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="easymath.first.activities.HelpActivity"
-            android:configChanges="orientation"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="easymath.first.HelpStudent"
+            android:name="com.easymath.activities.HelpStudentActivity"
             android:configChanges="orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="easymath.first.HelpTeacherActivity"
+            android:name="com.easymath.activities.HelpTeacherActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />

@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:2:1-142:12
+ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:2:1-127:12
 	package
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:3:5-33
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:3:5-27
 		INJECTED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -25,7 +25,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:8:
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:8:22-76
 uses-sdk
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:10:5-12:41
-MERGED from [com.android.support:gridlayout-v7:18.0.0] /Users/igoodis/.android/build-cache/7bcba2b9b61ecde6381caba68a74d07edfca2e65/output/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:gridlayout-v7:23.0.0] /Users/igoodis/.android/build-cache/3f104fd0d3cf94119f1430b689b0034e659435f9/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.0] /Users/igoodis/.android/build-cache/7ccf1d41c4eca8153c603ea1cf90d2f5fa9f4c37/output/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:12:9-38
 		INJECTED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml
@@ -35,8 +36,9 @@ MERGED from [com.android.support:gridlayout-v7:18.0.0] /Users/igoodis/.android/b
 		INJECTED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:14:5-140:19
-MERGED from [com.android.support:gridlayout-v7:18.0.0] /Users/igoodis/.android/build-cache/7bcba2b9b61ecde6381caba68a74d07edfca2e65/output/AndroidManifest.xml:19:5-20
+ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:14:5-125:19
+MERGED from [com.android.support:gridlayout-v7:23.0.0] /Users/igoodis/.android/build-cache/3f104fd0d3cf94119f1430b689b0034e659435f9/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.0] /Users/igoodis/.android/build-cache/7ccf1d41c4eca8153c603ea1cf90d2f5fa9f4c37/output/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:17:9-41
 	android:allowBackup
@@ -45,7 +47,7 @@ MERGED from [com.android.support:gridlayout-v7:18.0.0] /Users/igoodis/.android/b
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:16:9-45
 	android:theme
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:18:9-40
-activity#easymath.first.activities.MainActivity
+activity#com.easymath.activities.MainActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:19:9-30:20
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:23:13-49
@@ -56,7 +58,7 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:19
 	android:theme
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:24:13-51
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:20:13-66
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:20:13-64
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
@@ -67,7 +69,7 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:28:17-77
 	android:name
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:28:27-74
-activity#easymath.first.activities.MenuActivityenuActivity
+activity#com.easymath.activities.menus.MenuActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:31:9-35:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:35:13-49
@@ -76,8 +78,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:31
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:33:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:32:13-77
-activity#easymath.first.activities.learn.LearningActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:32:13-70
+activity#com.easymath.activities.learn.LearningActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:36:9-40:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:40:13-49
@@ -86,8 +88,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:36
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:38:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:37:13-76
-activity#easymath.first.activities.learn.LearningAddActivitytivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:37:13-74
+activity#com.easymath.activities.learn.LearningAddActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:41:9-45:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:45:13-49
@@ -96,8 +98,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:41
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:43:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:42:13-85
-activity#easymath.first.activities.learn.LearningSubActivitygSubActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:42:13-77
+activity#com.easymath.activities.learn.LearningSubActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:46:9-50:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:50:13-49
@@ -106,8 +108,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:46
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:48:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:47:13-91
-activity#easymath.first.activities.learn.LearningMulActivitytivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:47:13-77
+activity#com.easymath.activities.train.TrainingActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:51:9-55:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:55:13-49
@@ -116,8 +118,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:51
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:53:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:52:13-85
-activity#easymath.first.activities.learn.LearningDivideActivityningDivideActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:52:13-74
+activity#com.easymath.activities.DifficultyActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:56:9-60:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:60:13-49
@@ -126,8 +128,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:56
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:58:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:57:9-96
-activity#easymath.first.activities.train.TrainingActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:57:13-70
+activity#com.easymath.activities.train.TrainScreenActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:61:9-65:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:65:13-49
@@ -136,8 +138,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:61
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:63:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:62:13-76
-activity#easymath.first.activities.DifficultyActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:62:13-77
+activity#com.easymath.activities.menus.TeacherMenuActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:66:9-70:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:70:13-49
@@ -146,8 +148,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:66
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:68:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:67:13-72
-activity#easymath.first.activities.train.TrainingAddActivitytivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:67:7-71
+activity#com.easymath.activities.test.TestScreenActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:71:9-75:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:75:13-49
@@ -156,8 +158,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:71
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:73:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:72:13-85
-activity#easymath.first.activities.train.TrainScreenActivitytivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:72:13-75
+activity#com.easymath.activities.test.TestActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:76:9-80:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:80:13-49
@@ -166,8 +168,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:76
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:78:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:77:13-85
-activity#easymath.first.activities.TeacherMenuActivityst.TeacherMenuActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:77:13-69
+activity#com.easymath.activities.AddExScreenActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:81:9-85:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:85:13-49
@@ -176,9 +178,9 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:81
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:83:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:82:7-89
-activity#easymath.first.TestScreenActivity
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:86:9-90:52
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:82:13-71
+activity#com.easymath.activities.ConnectStudentsActivity
+ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:86:8-90:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:90:13-49
 	android:label
@@ -186,8 +188,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:86
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:88:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:87:13-61
-activity#easymath.first.TestActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:87:13-75
+activity#com.easymath.activities.ManageStudentsActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:91:9-95:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:95:13-49
@@ -196,8 +198,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:91
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:93:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:92:13-55
-activity#easymath.first.activities.AddExScreenActivityeenActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:92:13-74
+activity#com.easymath.activities.ProfileActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:96:9-100:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:100:13-49
@@ -206,9 +208,9 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:96
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:98:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:97:13-84
-activity#easymath.first.activities.ConnectStudentsActivity
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:101:8-105:52
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:97:13-67
+activity#com.easymath.activities.QuestionExplanationActivity
+ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:101:9-105:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:105:13-49
 	android:label
@@ -216,8 +218,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:10
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:103:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:102:13-77
-activity#easymath.first.activities.ManageStudentsActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:102:13-79
+activity#com.easymath.activities.test.TestEndActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:106:9-110:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:110:13-49
@@ -226,8 +228,8 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:10
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:108:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:107:13-76
-activity#easymath.first.activities.ProfileActivity
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:107:13-72
+activity#com.easymath.activities.HelpActivity
 ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:111:9-115:52
 	android:screenOrientation
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:115:13-49
@@ -236,52 +238,22 @@ ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:11
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:113:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:112:13-69
-activity#easymath.first.activities.QuestionExplanationActivity
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:116:9-120:52
-	android:screenOrientation
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:120:13-49
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:112:13-64
+activity#com.easymath.activities.HelpStudentActivity
+ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:116:10-119:48
 	android:label
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:119:13-45
 	android:configChanges
 		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:118:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:117:13-81
-activity#easymath.first.TestEndActivity
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:121:9-125:52
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:117:13-71
+activity#com.easymath.activities.HelpTeacherActivity
+ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:120:10-124:52
 	android:screenOrientation
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:125:13-49
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:124:13-49
 	android:label
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:124:13-45
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:123:13-45
 	android:configChanges
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:123:13-48
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:122:13-48
 	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:122:13-58
-activity#easymath.first.activities.HelpActivity
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:126:9-130:52
-	android:screenOrientation
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:130:13-49
-	android:label
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:129:13-45
-	android:configChanges
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:128:13-48
-	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:127:13-66
-activity#easymath.first.HelpStudent
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:131:10-134:48
-	android:label
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:134:13-45
-	android:configChanges
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:133:13-48
-	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:132:13-54
-activity#easymath.first.HelpTeacherActivity
-ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:135:10-139:52
-	android:screenOrientation
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:139:13-49
-	android:label
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:138:13-45
-	android:configChanges
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:137:13-48
-	android:name
-		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:136:13-62
+		ADDED from /Users/igoodis/EasyMath_workspace/app/src/main/AndroidManifest.xml:121:13-71
