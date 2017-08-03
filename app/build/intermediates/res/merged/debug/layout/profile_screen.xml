@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/relativeLayoutProfile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tvProfileAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="37dp"
+        android:layout_marginTop="136dp"
+        android:text="חיבור"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TvProfileSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvProfileAdd"
+        android:layout_below="@+id/tvProfileAdd"
+        android:layout_marginTop="75dp"
+        android:text="חיסור"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvProfileSubDb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TvProfileSub"
+        android:layout_alignLeft="@+id/tvProfileAddDb"
+        android:text="אין"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvProfileAddDb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TvProfileSub"
+        android:layout_centerHorizontal="true"
+        android:text="אין"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvProfileAvgTimeDb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvProfileAvgTime"
+        android:layout_alignBottom="@+id/tvProfileAvgTime"
+        android:layout_marginRight="44dp"
+        android:layout_toLeftOf="@+id/tvProfileAvgTime"
+        android:text="אין"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvProfileAvgTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/tvProfileAdd"
+        android:layout_marginBottom="83dp"
+        android:text="זמן תשובה ממוצע"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

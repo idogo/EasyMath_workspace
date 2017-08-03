@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btnShowProfileToTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btndeleteStudent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:text="הצג פרופיל" />
+
+    <Button
+        android:id="@+id/btndeleteStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnShowProfileToTeacher"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="75dp"
+        android:text="מחק תלמיד" />
+
+    <Spinner
+        android:id="@+id/spinnerShowStude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnShowProfileToTeacher"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="96dp" />
+
+</RelativeLayout>

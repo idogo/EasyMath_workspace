@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    android:id="@+id/relativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="500dp" >
+
+<Button
+    android:id="@+id/btnFinishExp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_marginLeft="130dp"
+    android:text="סיום" />
+
+<TextView
+    android:id="@+id/tvQuestionExpExc"
+    android:layout_width="200dp"
+    android:layout_height="70dp"
+    android:layout_below="@+id/tvAllQuestions"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="14dp"
+    android:gravity="center"
+    android:text="Large Text"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/tvAllQuestions"
+    android:layout_width="300dp"
+    android:layout_height="100dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:gravity="center"
+    android:text="Large Text"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    </RelativeLayout>
+

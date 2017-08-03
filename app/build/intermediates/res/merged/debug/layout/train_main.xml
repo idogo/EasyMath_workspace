@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/bttrainadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="104dp"
+        android:text="חיבור" />
+
+    <Button
+        android:id="@+id/bttrainsub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bttrainadd"
+        android:layout_alignBottom="@+id/bttrainadd"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="46dp"
+        android:text="חיסור" />
+
+    <Button
+        android:id="@+id/bttrainmultiply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bttrainadd"
+        android:layout_below="@+id/bttrainadd"
+        android:layout_marginTop="124dp"
+        android:text="כפל" />
+
+    <Button
+        android:id="@+id/bttraindivide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bttrainmultiply"
+        android:layout_alignBottom="@+id/bttrainmultiply"
+        android:layout_alignLeft="@+id/bttrainsub"
+        android:text="חילוק" />
+
+</RelativeLayout>

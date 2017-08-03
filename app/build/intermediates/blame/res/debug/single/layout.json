@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/learndivide_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/learndivide_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/addex_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/addex_screen.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/train_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/train_screen.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/learnmul_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/learnmul_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/menu_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/menu_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/profile_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/profile_screen.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/userexistpopup.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/userexistpopup.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/difficulty_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/difficulty_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/help_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/help_screen.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/learn_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/learn_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/learnadd_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/learnadd_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/testend_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/testend_screen.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/train_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/train_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/learnsub_main.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/learnsub_main.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/manage_students.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/manage_students.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/connectstudents_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/connectstudents_screen.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/question_explenation.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/question_explenation.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/teacherhelp_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/teacherhelp_screen.xml"
+    },
+    {
+        "merged": "/Users/igoodis/EasyMath_workspace/app/build/intermediates/res/merged/debug/layout/teacher_menu_screen.xml",
+        "source": "/Users/igoodis/EasyMath_workspace/app/src/main/res/layout/teacher_menu_screen.xml"
+    }
+]

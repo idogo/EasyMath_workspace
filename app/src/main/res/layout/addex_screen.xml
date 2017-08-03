@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btnaddEx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="137dp"
+        android:text="הוסף תרגיל" />
+
+    <EditText
+        android:id="@+id/tvaddEx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="33dp"
+        android:singleLine="true"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textViewtargil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvaddEx"
+        android:layout_toRightOf="@+id/tvaddEx"
+        android:text="תרגיל"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvAddLevelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:text="את תרגיל יש לכתוב ללא רווחים וללא שווה לדוגמא" />
+
+    <TextView
+        android:id="@+id/tvSubLevelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAddLevelTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="3+4" />
+
+</RelativeLayout>

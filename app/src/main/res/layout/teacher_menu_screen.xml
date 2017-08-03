@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/btnaddEx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="92dp"
+            android:text="הוספת תרגילים" />
+
+        <Button
+            android:id="@+id/buttonconstud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btnaddEx"
+            android:layout_centerVertical="true"
+            android:text="קישור תלמידים" />
+
+        <Button
+            android:id="@+id/btnManageStudents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonconstud"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:text="ניהול ומחיקת תלמידים" />
+
+        <Button
+            android:id="@+id/btnHelpTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="48dp"
+            android:text="עזרה" />
+
+    </RelativeLayout>
+
+</LinearLayout>

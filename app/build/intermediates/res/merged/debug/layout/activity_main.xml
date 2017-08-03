@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/lbscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/lbheadLine"
+        android:layout_below="@+id/btconnect"
+        android:layout_marginTop="53dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/lbheadLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:text="התחברות"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/tfpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lbpassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/tfuserName"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btconnect"
+        android:layout_alignBottom="@+id/btconnect"
+        android:layout_marginRight="29dp"
+        android:layout_toLeftOf="@+id/btconnect"
+        android:text="משתמש חדש" />
+
+    <Button
+        android:id="@+id/btconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lbscore"
+        android:layout_below="@+id/tfpassword"
+        android:layout_marginTop="98dp"
+        android:text="התחברות" />
+
+    <TextView
+        android:id="@+id/lbuserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btconnect"
+        android:layout_centerVertical="true"
+        android:text="שם משתמש"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/tfuserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btnewUser"
+        android:layout_alignTop="@+id/lbuserName"
+        android:ems="10"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tvTrain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lbuserName"
+        android:layout_alignLeft="@+id/lbuserName"
+        android:layout_marginBottom="43dp"
+        android:text="סוג משתמש "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spinnerStudTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lbuserName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/tfuserName"
+        android:layout_marginBottom="28dp" />
+
+    <EditText
+        android:id="@+id/tfverifypassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lbverifyPassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/tfpassword"
+        android:ems="10"
+        android:inputType="textPassword" >
+
+        
+    </EditText>
+
+    <TextView
+        android:id="@+id/lbpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tvTrain"
+        android:layout_below="@+id/tfuserName"
+        android:layout_marginTop="30dp"
+        android:text="סיסמא"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/lbverifyPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnewUser"
+        android:layout_alignLeft="@+id/lbuserName"
+        android:layout_marginBottom="22dp"
+        android:text="אימות סיסמא"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

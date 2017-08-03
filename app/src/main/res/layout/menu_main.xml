@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/classbackground"
+    android:orientation="vertical" >
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
+      android:orientation="vertical"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentTop="true" 
+      android:gravity="right" >
+      
+    <ImageButton
+        android:id="@+id/btnProfile"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/profile" 
+        android:gravity="right"/>
+   	 <ImageButton
+        android:id="@+id/btnHelpStud"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/help" 
+        android:gravity="right"/>
+ 
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLearn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btnlearning"
+        android:layout_below="@+id/btnlearning"
+        android:layout_marginRight="28dp"
+        android:text="לימוד"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dp" />
+
+    <ImageButton
+        android:id="@+id/btnlearning"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/btntraining"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="74dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/book" />
+
+    <ImageButton
+        android:id="@+id/btntraining"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/board" />
+
+    <TextView
+        android:id="@+id/tvTrain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btntraining"
+        android:layout_centerHorizontal="true"
+        android:text="תרגול"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dp" />
+
+    <ImageButton
+        android:id="@+id/btntest"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/btntraining"
+        android:layout_below="@+id/tvTrain"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/test" />
+
+    <TextView
+        android:id="@+id/tvTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvTrain"
+        android:layout_below="@+id/btntest"
+        android:text="מבחן"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dp" />
+
+</RelativeLayout>
