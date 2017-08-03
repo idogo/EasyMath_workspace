@@ -1,5 +1,6 @@
 package com.easymath.activities;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +24,11 @@ import android.widget.TextView;
 import com.easymath.activities.menus.MenuActivity;
 import com.easymath.activities.menus.TeacherMenuActivity;
 import com.easymath.common.User;
+import com.easymath.util.Constants;
 import com.easymath.util.FirebaseDBUtils;
 import com.easymath.R;
 
+import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -38,214 +41,214 @@ import com.firebase.client.ValueEventListener;
  */
 public class MainActivity extends Activity {
 
+	private static final String PASSWORD = "password";
+	private static final String NO_CONNECTION_TITLE_PROP = "login.noconnection.title";
+	private static final String NO_CONNECTION_MSG_PROP = "login.noconnection.msg";
+	private static final String WRONG_PW_TITLE_PROP = "login.wrongpassword.title";
+	private static final String WRONG_PW_MSG_PROP = "login.wrongpassword.msg";
+
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		try {
+			super.onCreate(savedInstanceState);
 
-		// Handle context
-		Firebase.setAndroidContext(this);
-		setContentView(R.layout.activity_main);
-		final Context context = this;
+			// Handle context
+			Firebase.setAndroidContext(this);
+			setContentView(R.layout.activity_main);
+			final Context context = this;
 
-		// Handle view and background
-		View view = getWindow().getDecorView();
-		Drawable myIcon = getResources().getDrawable(R.drawable.classbackground);
-		view.setBackgroundDrawable(myIcon);
-		
-		// Make sure the device has internet access
-		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-		if( activeNetworkInfo == null) {
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-					context);
-			alertDialogBuilder.setTitle("אין חיבור");
-			alertDialogBuilder.setMessage("האפליקציה דורשת חיבור אינטרנט, ולפלאפון אין חיבור זמין כרגע").setCancelable(false).setPositiveButton("יציאה",new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog,int id) {
-					dialog.cancel();
-					finish();
+			// Init properties
+			PropertiesUtil.initProperties(getApplicationContext());
+
+
+			// Handle view and background
+			View view = getWindow().getDecorView();
+			Drawable myIcon = getResources().getDrawable(R.drawable.classbackground);
+			view.setBackgroundDrawable(myIcon);
+
+			// Make sure the device has internet access
+			ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+			if( activeNetworkInfo == null) {
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+						context);
+				alertDialogBuilder.setTitle(PropertiesUtil.getProperty(NO_CONNECTION_TITLE_PROP));
+				alertDialogBuilder.setMessage(PropertiesUtil.getProperty(NO_CONNECTION_MSG_PROP)).setCancelable(false).setPositiveButton(PropertiesUtil.getExitMessage(),new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						dialog.cancel();
+						finish();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();
+			}
+
+			// Connect button
+			Button connect = (Button) findViewById(R.id.btconnect);
+			connect.setBackgroundResource(R.drawable.green);
+			connect.setTextSize(20);
+			connect.setTextColor(Color.parseColor(Constants.BLACK_COLOR));
+
+			// Register new user button
+			Button newUser = (Button) findViewById(R.id.btnewUser);
+			newUser.setBackgroundResource(R.drawable.green);
+			newUser.setTextSize(20);
+			newUser.setTextColor(Color.parseColor(Constants.BLACK_COLOR));
+
+			// Spinner (dropdown list) to choose teacher or student
+			Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
+			List<String> list = new ArrayList<String>();
+			list.add(Constants.TEACHER);
+			list.add(Constants.STDUENT);
+			ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
+			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spinner.setAdapter(dataAdapter);
+
+			// Clicked connect
+			connect.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// Connect to DB with connection string
+					Firebase databaseReference = new Firebase(FirebaseDBUtils.getDatabaseURL());
+					Firebase objectRef;
+
+					// Get user and password from text views
+					final TextView userName = (TextView) findViewById(R.id.tfuserName);
+					final TextView password = (TextView) findViewById(R.id.tfpassword);
+					// Get user type from spinner (teacher or student)
+					final Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
+					final String userKind = spinner.getSelectedItem().toString();
+
+					// Fetch the needed objects from the DB
+					if(userKind.equals(Constants.TEACHER)) {
+						objectRef = FirebaseDBUtils.getTable(databaseReference, FirebaseDBUtils.TEACHERS_TBL);
+					}
+					else
+					{
+						objectRef = FirebaseDBUtils.getTable(databaseReference, FirebaseDBUtils.STUDENTS_TBL);
+					}
+
+					// Receive events
+					objectRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+						@Override
+						public void onDataChange(DataSnapshot snapshot) {
+							try {
+								// Authenticate user and passoword
+								final String userNameString = userName.getText().toString().trim();
+								final String passwordString = password.getText().toString();
+
+								// If a user with this name exists
+								if (snapshot.child(userNameString).exists()) {
+									DataSnapshot data = snapshot.child(userNameString);
+									String password = (String) data.child(PASSWORD).getValue();
+									// If the passwird doesn't match
+									if (!password.equals(passwordString)) {
+										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+										alertDialogBuilder.setTitle(PropertiesUtil.getProperty(WRONG_PW_TITLE_PROP));
+										alertDialogBuilder.setMessage(PropertiesUtil.getProperty(WRONG_PW_MSG_PROP)).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+											public void onClick(DialogInterface dialog, int id) {
+												dialog.cancel();
+											}
+										});
+										AlertDialog alertDialog = alertDialogBuilder.create();
+										alertDialog.show();
+									}
+									// Password matches, connect
+									else {
+										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+										alertDialogBuilder.setTitle("התחברות");
+										alertDialogBuilder.setMessage("התחברת בהצלחה").setCancelable(false).setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+											public void onClick(DialogInterface dialog, int id) {
+												// Redirect students to the student menu
+												if (userKind.equals("תלמיד")) {
+													User.userName = userNameString;
+													User.password = passwordString;
+													Intent myIntent = null;
+													MainActivity.this.finish();
+													myIntent = new Intent(MainActivity.this, MenuActivity.class);
+													MainActivity.this.startActivity(myIntent);
+												} else {
+													// Redirect teachers to the teachers menu
+													User.userName = userNameString;
+													User.password = passwordString;
+													Intent myIntent = null;
+													MainActivity.this.finish();
+													myIntent = new Intent(MainActivity.this, TeacherMenuActivity.class);
+													MainActivity.this.startActivity(myIntent);
+												}
+											}
+										});
+										AlertDialog alertDialog = alertDialogBuilder.create();
+										alertDialog.show();
+									}
+
+								}
+								// User doesn't exist
+								else {
+									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+									alertDialogBuilder.setTitle("משתמש לא קיים");
+									alertDialogBuilder.setMessage("שם משתמש לא קיים, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											dialog.cancel();
+										}
+									});
+									AlertDialog alertDialog = alertDialogBuilder.create();
+									alertDialog.show();
+								}
+								}catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+							@Override
+							public void onCancelled(FirebaseError arg0) {
+							}
+						});
 				}
 			});
-			AlertDialog alertDialog = alertDialogBuilder.create();
-			alertDialog.show();
-		}
 
-		// Connect button
-		Button connect = (Button) findViewById(R.id.btconnect);
-		connect.setBackgroundResource(R.drawable.green);
-		connect.setTextSize(20);
-		connect.setTextColor(Color.parseColor("black"));
-		
-		// Register new user button
-		Button newUser = (Button) findViewById(R.id.btnewUser);
-		newUser.setBackgroundResource(R.drawable.green);
-		newUser.setTextSize(20);
-		newUser.setTextColor(Color.parseColor("black"));
-		
-		// Spinner (dropdown list) to choose teacher or student
-		Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
-		List<String> list = new ArrayList<String>();
-		list.add("מורה");
-		list.add("תלמיד");
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
-		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(dataAdapter);
+			// Clicked New User
+			newUser.setOnClickListener(new View.OnClickListener() {
 
-		// Clicked connect
-		connect.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// Connect to DB with connection string
+					Firebase databaseReference = new Firebase(FirebaseDBUtils.getDatabaseURL());
+					final Firebase objectRef ;
 
-			@Override
-			public void onClick(View v) {
-				// Connect to DB with connection string
-				Firebase databaseReference = new Firebase(FirebaseDBUtils.getDatabaseURL());
-				Firebase objectRef;
-				
-				// Get user and password from text views
-				final TextView userName = (TextView) findViewById(R.id.tfuserName);
-				final TextView password = (TextView) findViewById(R.id.tfpassword);
-				// Get user type from spinner (teacher or student)
-				final Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
-				final String userKind = spinner.getSelectedItem().toString();
-				
-				// Fetch the needed objects from the DB
-				if(userKind.equals("מורה")) {
-					objectRef = databaseReference.child("users/teachers");
-				}
-				else
-				{
-					objectRef = databaseReference.child("users/students");
-				}
+					// Get user and password input
+					final TextView userName = (TextView) findViewById(R.id.tfuserName);
+					final TextView password = (TextView) findViewById(R.id.tfpassword);
+					final TextView verifyPassword = (TextView) findViewById(R.id.tfverifypassword);
 
-				// Receive events
-				objectRef.addListenerForSingleValueEvent(new ValueEventListener() {
-					@Override
-					public void onDataChange(DataSnapshot snapshot) {
-						
-						// Authenticate user and passoword
-						final String userNameString = userName.getText().toString().trim();
-						final String passwordString = password.getText().toString();
-
-						// If a user with this name exists
-						if (snapshot.child(userNameString).exists()) {
-							DataSnapshot data = snapshot.child(userNameString);
-							String password = (String) data.child("password").getValue();
-							// If the passwird doesn't match
-							if(!password.equals(passwordString)){
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-								alertDialogBuilder.setTitle("סיסמא שגויה");
-								alertDialogBuilder.setMessage("סיסמא לא נכונה, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,int id) {
-										dialog.cancel();
-									}
-								});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
-							}
-							// Password matches, connect
-							else{
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-								alertDialogBuilder.setTitle("התחברות");
-								alertDialogBuilder.setMessage("התחברת בהצלחה").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,int id) {
-										// Redirect students to the student menu
-										if (userKind.equals("תלמיד")){
-											User.userName = userNameString;
-											User.password = passwordString;
-											Intent myIntent = null;
-											MainActivity.this.finish();
-											myIntent = new Intent(MainActivity.this,MenuActivity.class);
-											MainActivity.this.startActivity(myIntent); }
-										else {
-											// Redirect teachers to the teachers menu
-											User.userName = userNameString;
-											User.password = passwordString;
-											Intent myIntent = null;
-											MainActivity.this.finish();
-											myIntent = new Intent(MainActivity.this,TeacherMenuActivity.class);
-											MainActivity.this.startActivity(myIntent);
-										}
-									}
-								});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
-							}
-
-						}
-						// User doesn't exist
-						else {
-							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-							alertDialogBuilder.setTitle("משתמש לא קיים");
-							alertDialogBuilder.setMessage("שם משתמש לא קיים, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,int id) {
-									dialog.cancel();
-								}
-							});
-							AlertDialog alertDialog = alertDialogBuilder.create();
-							alertDialog.show();
-						}
+					// Get user type from spinner (teacher or student)
+					final Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
+					final String userKind = spinner.getSelectedItem().toString();
+					if(userKind.equals("מורה")) {
+						objectRef = databaseReference.child("users/teachers");
 					}
-					@Override
-					public void onCancelled(FirebaseError arg0) {
+					else
+					{
+						objectRef = databaseReference.child("users/students");
 					}
-				});
-			}
-		});
-		
-		// Clicked New User
-		newUser.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				// Connect to DB with connection string
-				Firebase databaseReference = new Firebase(FirebaseDBUtils.getDatabaseURL());
-				final Firebase objectRef ;
-				
-				// Get user and password input
-				final TextView userName = (TextView) findViewById(R.id.tfuserName);
-				final TextView password = (TextView) findViewById(R.id.tfpassword);
-				final TextView verifyPassword = (TextView) findViewById(R.id.tfverifypassword);
-				
-				// Get user type from spinner (teacher or student)
-				final Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
-				final String userKind = spinner.getSelectedItem().toString();
-				if(userKind.equals("מורה")) {
-					objectRef = databaseReference.child("users/teachers");
-				}
-				else
-				{
-					objectRef = databaseReference.child("users/students");
-				}
+					// Receive events
+					objectRef.addListenerForSingleValueEvent(new ValueEventListener() {
+						@Override
+						public void onDataChange(DataSnapshot snapshot) {
 
-				// Receive events
-				objectRef.addListenerForSingleValueEvent(new ValueEventListener() {
-					@Override
-					public void onDataChange(DataSnapshot snapshot) {
-						
-						// Register the user
-						final String userNameString = userName.getText().toString().trim();
-						final String passwordString = password.getText().toString();
-						final String verifyPasswordString = verifyPassword.getText().toString();
+							// Register the user
+							final String userNameString = userName.getText().toString().trim();
+							final String passwordString = password.getText().toString();
+							final String verifyPasswordString = verifyPassword.getText().toString();
 
-						// If this username is already used
-						if(snapshot.child(userNameString).exists()){
-							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-							alertDialogBuilder.setTitle("משתמש קיים");
-							alertDialogBuilder.setMessage("שם המשתמש כבר קיים במערכת, אנא נסה שם אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,int id) {
-									dialog.cancel();
-								}
-							});
-							AlertDialog alertDialog = alertDialogBuilder.create();
-							alertDialog.show();
-						}
-						// Username isn't used so we can register it
-						else {
-							// Validate passowrd
-							if (passwordString.length()==0) {
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-										context);
-								alertDialogBuilder.setTitle("סיסמא לא חוקית");
-								alertDialogBuilder.setMessage("סיסמא לא יכולה להיות ריקה, אנא הוסף סיסמא").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							// If this username is already used
+							if(snapshot.child(userNameString).exists()){
+								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+								alertDialogBuilder.setTitle("משתמש קיים");
+								alertDialogBuilder.setMessage("שם המשתמש כבר קיים במערכת, אנא נסה שם אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,int id) {
 										dialog.cancel();
 									}
@@ -253,70 +256,88 @@ public class MainActivity extends Activity {
 								AlertDialog alertDialog = alertDialogBuilder.create();
 								alertDialog.show();
 							}
-							// Check that the passowrd equals verifyPassword
-							else if(!passwordString.equals(verifyPasswordString)) {
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-										context);
-								alertDialogBuilder.setTitle("אימות סיסמא שגוי");
-								alertDialogBuilder.setMessage("הסיסמא ואימות הסיסמא לא זהים").setCancelable(false)
-								.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,int id) {
-										dialog.cancel();
-									}
-								});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
-							}
-							// Everything is okay, register the new user
+							// Username isn't used so we can register it
 							else {
-								// Create a DB user object
-								Firebase newRef = objectRef.child(userNameString);
-								// Set username and password
-								newRef.child("userName").setValue(userNameString);
-								newRef.child("password").setValue(passwordString);
-								
-								// Extra information for students
-								if(userKind.equals("תלמיד")) {
-									newRef.child("teacherName").setValue("-1");
-									newRef.child("add").setValue("0");
-									newRef.child("sub").setValue("0");
-									newRef.child("numoftests").setValue("0");
-									newRef.child("avgtime").setValue("0");
-								}
-
-								// Alert
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-								alertDialogBuilder.setTitle("התחברות");
-								alertDialogBuilder.setMessage("המשתמש התווסף בהצלחה, התחברת למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,int id) {
-										// Keep the connected user in the User stucture
-										User.userName = userNameString;
-										User.password = passwordString;
-										if (userKind.equals("תלמיד")){
-											// Redirect to MenuActivity for students
-											Intent myIntent = null;
-											MainActivity.this.finish();
-											myIntent = new Intent(MainActivity.this,MenuActivity.class);
-											MainActivity.this.startActivity(myIntent); }
-										else {
-											// Redirect to TeacherMenuActivity for teachers
-											Intent myIntent = null;
-											MainActivity.this.finish();
-											myIntent = new Intent(MainActivity.this,TeacherMenuActivity.class);
-											MainActivity.this.startActivity(myIntent);
+								// Validate passowrd
+								if (passwordString.length()==0) {
+									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+											context);
+									alertDialogBuilder.setTitle("סיסמא לא חוקית");
+									alertDialogBuilder.setMessage("סיסמא לא יכולה להיות ריקה, אנא הוסף סיסמא").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog,int id) {
+											dialog.cancel();
 										}
+									});
+									AlertDialog alertDialog = alertDialogBuilder.create();
+									alertDialog.show();
+								}
+								// Check that the passowrd equals verifyPassword
+								else if(!passwordString.equals(verifyPasswordString)) {
+									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+											context);
+									alertDialogBuilder.setTitle("אימות סיסמא שגוי");
+									alertDialogBuilder.setMessage("הסיסמא ואימות הסיסמא לא זהים").setCancelable(false)
+									.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog,int id) {
+											dialog.cancel();
+										}
+									});
+									AlertDialog alertDialog = alertDialogBuilder.create();
+									alertDialog.show();
+								}
+								// Everything is okay, register the new user
+								else {
+									// Create a DB user object
+									Firebase newRef = objectRef.child(userNameString);
+									// Set username and password
+									newRef.child("userName").setValue(userNameString);
+									newRef.child("password").setValue(passwordString);
+
+									// Extra information for students
+									if(userKind.equals("תלמיד")) {
+										newRef.child("teacherName").setValue("-1");
+										newRef.child("add").setValue("0");
+										newRef.child("sub").setValue("0");
+										newRef.child("numoftests").setValue("0");
+										newRef.child("avgtime").setValue("0");
 									}
-								});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
+
+									// Alert
+									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+									alertDialogBuilder.setTitle("התחברות");
+									alertDialogBuilder.setMessage("המשתמש התווסף בהצלחה, התחברת למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog,int id) {
+											// Keep the connected user in the User stucture
+											User.userName = userNameString;
+											User.password = passwordString;
+											if (userKind.equals("תלמיד")){
+												// Redirect to MenuActivity for students
+												Intent myIntent = null;
+												MainActivity.this.finish();
+												myIntent = new Intent(MainActivity.this,MenuActivity.class);
+												MainActivity.this.startActivity(myIntent); }
+											else {
+												// Redirect to TeacherMenuActivity for teachers
+												Intent myIntent = null;
+												MainActivity.this.finish();
+												myIntent = new Intent(MainActivity.this,TeacherMenuActivity.class);
+												MainActivity.this.startActivity(myIntent);
+											}
+										}
+									});
+									AlertDialog alertDialog = alertDialogBuilder.create();
+									alertDialog.show();
+								}
 							}
 						}
-					}
-					@Override
-					public void onCancelled(FirebaseError arg0) {
-					}
-				});
-			}
-		});
+						@Override
+						public void onCancelled(FirebaseError arg0) {
+						}
+					});
+				}
+			});
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
