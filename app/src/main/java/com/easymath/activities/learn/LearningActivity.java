@@ -25,6 +25,7 @@ public class LearningActivity extends Activity {
 	    LEARNING , ADD_EX}
 
 	@SuppressLint("NewApi")
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.learn_main);

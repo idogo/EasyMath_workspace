@@ -14,6 +14,8 @@ import com.easymath.R;
  * @author liadpc
  */
 public class LearningSubActivity extends Activity {
+
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.learnsub_main);

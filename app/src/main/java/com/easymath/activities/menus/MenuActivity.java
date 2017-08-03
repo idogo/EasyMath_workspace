@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import com.easymath.common.User;
 import com.easymath.R;
+import com.easymath.util.Constants;
 
 /**
  * The menu screen for students
@@ -21,7 +22,8 @@ import com.easymath.R;
 public class MenuActivity extends Activity {
 	
 	String arg;
-	
+
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu_main);
@@ -35,9 +37,9 @@ public class MenuActivity extends Activity {
 		TextView text1 = (TextView)findViewById(R.id.tvLearn);
 		TextView text2 = (TextView)findViewById(R.id.tvTrain);
 		TextView text3 = (TextView)findViewById(R.id.tvTest);
-		text1.setTextColor(Color.parseColor("white"));
-		text2.setTextColor(Color.parseColor("white"));
-		text3.setTextColor(Color.parseColor("white"));
+		text1.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
+		text2.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
+		text3.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		
 		ImageButton learning = (ImageButton)findViewById(R.id.btnlearning);
 		ImageButton training = (ImageButton) findViewById(R.id.btntraining);

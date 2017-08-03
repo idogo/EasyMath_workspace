@@ -3,6 +3,7 @@ package com.easymath.activities.test;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import com.easymath.util.Constants;
 import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -42,15 +43,17 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 
 	
 	 @Override
-     public void onInit(int status) {
+	 @SuppressWarnings("deprecation")
+	 public void onInit(int status) {
 		 // Use Android TextToSpeech to speak the question
         if(status != TextToSpeech.ERROR) {
            t1.setLanguage(Locale.US);
            String soundExercise = prepareSound();
            t1.speak(soundExercise, TextToSpeech.QUEUE_FLUSH, null);
         }
-     }	
-	
+     }
+
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -66,7 +69,7 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 		
 		// Show question
 		TextView questionView = (TextView)findViewById(R.id.tv_question);
-		questionView.setTextColor(Color.parseColor("white"));
+		questionView.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		
 		// Answer 1
 		Button button1 = (Button)findViewById(R.id.ans1);
@@ -126,7 +129,7 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 					Questions.points ++;
 					// Set true for the boolean list
 					Questions.correctAnswersInTest[Questions.numOfQuestion-1] = true;
-					// Speak "Correct!"
+					// Speak Correct
 					rightAnswer(context);
 				}
 				else {
@@ -181,11 +184,11 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 	}
 
 	/**
-	 * Speak "Correct!"
+	 * Speak Constants.CORRECT_ANSWER
 	 */
 	private void rightAnswer(final Context context) {
 		try {
-			t1.speak("Correct!", TextToSpeech.QUEUE_FLUSH, null);
+			t1.speak(Constants.CORRECT_ANSWER, TextToSpeech.QUEUE_FLUSH, null);
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 					context);
 			alertDialogBuilder.setTitle(RIGHT_ANSWER_TITLE);
@@ -206,9 +209,10 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 	/**
 	 * Speak "Wrong!"
 	 */
+	@SuppressWarnings("deprecation")
 	private void wrongAnswer(final Context context , int ans) {
 		try {
-			t1.speak("Wrong!", TextToSpeech.QUEUE_FLUSH, null);
+			t1.speak(Constants.WRONG_ANSWER, TextToSpeech.QUEUE_FLUSH, null);
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 			alertDialogBuilder.setTitle(WRONG_ANSWER_TITLE);
 			alertDialogBuilder.setMessage(WRONG_ANSWER_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
@@ -238,7 +242,7 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 			// Fetch next question
 			DataSnapshot questionref = Questions.QuestionsRefFortest[Questions.numOfQuestion];
 			Questions.numOfQuestion++;
-			String question = (String) questionref.child("question").getValue();
+			String question = (String) questionref.child(Constants.QUESTION).getValue();
 			
 			// Fetch answers
 			String ans1 =  questionref.child("ans1").getValue().toString();

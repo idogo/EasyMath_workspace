@@ -44,6 +44,7 @@ public class DifficultyActivity extends Activity {
 		ADD_BASIC, ADD_UPTO20, ADD_3ELEMENTS, SUB_BASIC, SUB_UPTO20, SUB_3ELEMENTS, ADDSUB_BASIC}	
 	
 	@SuppressLint("NewApi")
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.difficulty_main);

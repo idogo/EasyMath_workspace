@@ -1,5 +1,6 @@
 package com.easymath.activities.test;
 
+import com.easymath.util.Constants;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -27,6 +28,7 @@ import com.easymath.R;
  */
 public class TestEndActivity extends Activity {
 
+	@SuppressWarnings("ResourceType")
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		// Handle context
@@ -47,7 +49,7 @@ public class TestEndActivity extends Activity {
 		TextView score = new TextView(context);
 		score.setId(0);
 		score.setTextSize(35f);
-		score.setTextColor(Color.parseColor("white"));
+		score.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		score.setText(" " + "ציון:" + calculateScore(Questions.correctAnswersInTest, Questions.answersTimesInTest));
 		score.setGravity(Gravity.CENTER_HORIZONTAL);
 		
@@ -58,7 +60,7 @@ public class TestEndActivity extends Activity {
 		parentView.addView(score, pscore);
 		
 		// Show first question + answers
-		String question = (String) questionref.child("question").getValue();
+		String question = (String) questionref.child(Constants.QUESTION).getValue();
 		String ans1 =  questionref.child("ans1").getValue().toString();
 		String ans2 =  questionref.child("ans2").getValue().toString();
 		String ans3 =  questionref.child("ans3").getValue().toString();
@@ -73,7 +75,7 @@ public class TestEndActivity extends Activity {
 		TextView t = new TextView(context);
 		t.setId(1);
 		t.setTextSize(22f);
-		t.setTextColor(Color.parseColor("white"));
+		t.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		t.setGravity(Gravity.CENTER_HORIZONTAL);
 		t.setText("\n \n" + question + " " + " (" + timeTaken + " " + "שניות" + ") ");
 		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(400, 200);
@@ -147,7 +149,7 @@ public class TestEndActivity extends Activity {
 			curravgtime += timeTaken;
 			
 			// Get question + answers
-			question = (String) questionref.child("question").getValue();
+			question = (String) questionref.child(Constants.QUESTION).getValue();
 			ans1 =  questionref.child("ans1").getValue().toString();
 			ans2 =  questionref.child("ans2").getValue().toString();
 			ans3 =  questionref.child("ans3").getValue().toString();
@@ -157,7 +159,7 @@ public class TestEndActivity extends Activity {
 			t = new TextView(context);
 			t.setId(i+1);
 			t.setTextSize(22f);
-			t.setTextColor(Color.parseColor("white"));
+			t.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 			t.setGravity(Gravity.CENTER_HORIZONTAL);
 			t.setText("\n" + question + "\n" + " (" + timeTaken + " " + "שניות" + ") ");
 			p = new RelativeLayout.LayoutParams(400, 200);
@@ -231,7 +233,7 @@ public class TestEndActivity extends Activity {
 		TextView tvAvg = new TextView(context);
 		tvAvg.setTextSize(15f);
 		tvAvg.setId(65);
-		tvAvg.setTextColor(Color.parseColor("white"));
+		tvAvg.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		tvAvg.setText(" " + "זמן תשובה ממוצע בשניות: " + finalAvgTime);
 		tvAvg.setGravity(Gravity.CENTER_HORIZONTAL);
 		RelativeLayout.LayoutParams pavg = new RelativeLayout.LayoutParams(400, 200);
@@ -368,7 +370,7 @@ public class TestEndActivity extends Activity {
 			double coefficient = Questions.coefficient[i];
 			
 			DataSnapshot questionref = Questions.QuestionsRefFortest[i];
-			String question = (String) questionref.child("question").getValue();
+			String question = (String) questionref.child(Constants.QUESTION).getValue();
 					
 			
 			if(studentAnswer == TestActivity.getAns(question)){
@@ -420,7 +422,7 @@ public class TestEndActivity extends Activity {
 			double coefficient = Questions.coefficient[i];
 			
 			DataSnapshot questionref = Questions.QuestionsRefFortest[i];
-			String question = (String) questionref.child("question").getValue();
+			String question = (String) questionref.child(Constants.QUESTION).getValue();
 					
 			if(studentAnswer == TestActivity.getAns(question)){
 			correctCounter++;

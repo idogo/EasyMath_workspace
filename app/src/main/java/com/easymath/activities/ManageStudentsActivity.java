@@ -30,6 +30,7 @@ public class ManageStudentsActivity extends Activity {
 
 	String arg;
 
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		

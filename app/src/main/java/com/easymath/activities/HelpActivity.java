@@ -31,7 +31,7 @@ public class HelpActivity extends TabActivity {
 		TabSpec tab2 = tabHost.newTabSpec("student");
 		
 		// Redirect to teacher help
-		tab1.setIndicator("מורה");
+		tab1.setIndicator(Constants.TEACHER);
         tab1.setContent(new Intent(this,HelpTeacherActivity.class));
         
      // Redirect to student help

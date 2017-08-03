@@ -28,7 +28,7 @@ import java.io.IOException;
  */
 public class ConnectStudentsActivity extends Activity{
 
-	
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Handle context

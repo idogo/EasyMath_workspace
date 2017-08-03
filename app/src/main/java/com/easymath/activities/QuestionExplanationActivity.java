@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.Exchanger;
 
+import com.easymath.util.Constants;
 import com.easymath.util.PropertiesUtil;
 import com.firebase.client.Firebase;
 import android.annotation.SuppressLint;
@@ -43,7 +44,8 @@ public class QuestionExplanationActivity extends Activity{
 	final int ADDDROPID = 101; 
 	final int SUBTVID = 200;
 	private static MediaPlayer mediaPlayer;
-	
+
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -65,12 +67,12 @@ public class QuestionExplanationActivity extends Activity{
 		
 		// Show half exercise for 3 elements questions
 		TextView halfExercise = (TextView)findViewById(R.id.tvQuestionExpExc);
-		halfExercise.setTextColor(Color.parseColor("white"));
+		halfExercise.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		halfExercise.setTextSize(50);
 		
 		// Show the exercise for regular questions
 		TextView allExercise = (TextView)findViewById(R.id.tvAllQuestions);
-		allExercise.setTextColor(Color.parseColor("white"));
+		allExercise.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		allExercise.setTextSize(70);
 		finish.setVisibility(View.INVISIBLE);
 		finish.setClickable(false);
@@ -120,6 +122,7 @@ public class QuestionExplanationActivity extends Activity{
 	/**
 	 * Visualized animated game for Sub questions
 	 */
+	@SuppressWarnings("ResourceType")
 	private void visualizeSubGame( final Context context, final Button finish, final TextView exercise, final boolean firstHalf, boolean addSub) {
 		
 		// Radomise picture (balloon, flower etc..)
@@ -164,7 +167,7 @@ public class QuestionExplanationActivity extends Activity{
 		// Show question text
 		final TextView t = new TextView(context);
 		t.setGravity(Gravity.CENTER);
-		t.setTextColor(Color.parseColor("white"));
+		t.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		t.setTextSize(35f);
 		t.setId(SUBTVID);
 		t.setText(String.valueOf(Questions.questionExplanationVar));
@@ -375,6 +378,7 @@ public class QuestionExplanationActivity extends Activity{
 	/**
 	 * Visualized animated game for Add questions
 	 */
+	@SuppressWarnings("ResourceType")
 	private void visualizeAddGame(final Context context, final Button finish, final TextView exercise, final boolean firstHalf, boolean addSub) {
 		// Radomise picture (balloon, flower etc..)
 		Random r = new Random();
@@ -531,7 +535,7 @@ public class QuestionExplanationActivity extends Activity{
 		final TextView t = new TextView(context);
 		t.setGravity(Gravity.CENTER);
 		t.setId(ADDTVID);
-		t.setTextColor(Color.parseColor("white"));
+		t.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		t.setTextSize(35f);
 		
 		// Image for the box to drop the balloons at

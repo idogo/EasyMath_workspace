@@ -28,7 +28,7 @@ import com.easymath.R;
 @SuppressLint("UseValueOf")
 public class TestActivity extends Activity{
 
-	
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 

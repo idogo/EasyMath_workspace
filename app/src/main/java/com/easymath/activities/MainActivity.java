@@ -60,6 +60,7 @@ public class MainActivity extends Activity {
 	private static final String REGISTER_SUCCESS_MSG = "register.success.msg";
 
 	@SuppressLint("NewApi")
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		try {

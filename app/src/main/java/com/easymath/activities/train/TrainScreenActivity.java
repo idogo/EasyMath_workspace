@@ -2,6 +2,7 @@ package com.easymath.activities.train;
 
 import java.util.Locale;
 
+import com.easymath.util.Constants;
 import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -60,7 +61,7 @@ public class TrainScreenActivity extends Activity  implements TextToSpeech.OnIni
 		
 		// Show question
 		TextView questionView = (TextView)findViewById(R.id.tv_question);
-		questionView.setTextColor(Color.parseColor("white"));
+		questionView.setTextColor(Color.parseColor(Constants.WHITE_COLOR));
 		
 		// Answer 1
 		Button button1 = (Button)findViewById(R.id.ans1);
@@ -159,7 +160,7 @@ public class TrainScreenActivity extends Activity  implements TextToSpeech.OnIni
 	private void wrongAnswer(final Context context, int ans) {
 		try {
 			// Speak
-			t1.speak("Wrong!", TextToSpeech.QUEUE_FLUSH, null);
+			t1.speak(Constants.WRONG_ANSWER, TextToSpeech.QUEUE_FLUSH, null);
 
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 			alertDialogBuilder.setTitle("תשובה שגויה");
@@ -215,7 +216,7 @@ public class TrainScreenActivity extends Activity  implements TextToSpeech.OnIni
 	private void rightAnswer(final Context context) {
 		try {
 			// Speak
-			t1.speak("Correct!", TextToSpeech.QUEUE_FLUSH, null);
+			t1.speak(Constants.CORRECT_ANSWER, TextToSpeech.QUEUE_FLUSH, null);
 			// Alert
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 			alertDialogBuilder.setTitle("תשובה נכונה!");
@@ -252,7 +253,7 @@ public class TrainScreenActivity extends Activity  implements TextToSpeech.OnIni
 				public void onDataChange(DataSnapshot snapshot) {
 					
 					// Fetch next question
-					String question = (String) snapshot.child("question").getValue();
+					String question = (String) snapshot.child(Constants.QUESTION).getValue();
 					
 					// Fetch answers
 					String ans1 =  snapshot.child("ans1").getValue().toString();
