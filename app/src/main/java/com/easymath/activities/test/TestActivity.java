@@ -3,6 +3,7 @@ package com.easymath.activities.test;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -39,15 +40,18 @@ public class TestActivity extends Activity{
 		// Create an Alert with message and button
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		alertDialogBuilder.setTitle("מבחן");
-		alertDialogBuilder.setMessage("עליך לענות כעת על 10 שאלות. בהצלחה!").setCancelable(false)
-		.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				// After accepting the message, close the dialog and prepare the test
-				dialog.cancel();
-				prepareTest();
-			}
-		});
-		
+		try {
+			alertDialogBuilder.setMessage("עליך לענות כעת על 10 שאלות. בהצלחה!").setCancelable(false)
+					.setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							// After accepting the message, close the dialog and prepare the test
+							dialog.cancel();
+							prepareTest();
+						}
+					});
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		// Show the alert
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();	
