@@ -1,5 +1,6 @@
 package com.easymath.activities;
 
+import com.easymath.util.Constants;
 import com.firebase.client.Firebase;
 
 import android.app.TabActivity;
@@ -34,7 +35,7 @@ public class HelpActivity extends TabActivity {
         tab1.setContent(new Intent(this,HelpTeacherActivity.class));
         
      // Redirect to student help
-        tab2.setIndicator("תלמיד");
+        tab2.setIndicator(Constants.STUDENT);
         tab2.setContent(new Intent(this,HelpStudentActivity.class));
         
         tabHost.addTab(tab1);

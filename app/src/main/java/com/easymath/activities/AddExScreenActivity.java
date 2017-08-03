@@ -1,9 +1,11 @@
 package com.easymath.activities;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -38,7 +40,7 @@ public class AddExScreenActivity extends Activity {
 	private static final String EX_EXISTS_MSG_PROP = "add.exercise.existsex.msg";
 	private static final String ADDED_EX_TITLE_PROP = "add.exercise.addedex.title";
 	private static final String ADDED_EX_MSG_PROP = "add.exercise.addedex.msg";
-	
+
 	// Possible subjects enum
 	private enum AddExSubject {
 		ADD_BASIC, ADD_UPTO20, ADD_3ELEMENTS, SUB_BASIC, SUB_UPTO20, SUB_3ELEMENTS, ADDSUB}	
@@ -69,12 +71,12 @@ public class AddExScreenActivity extends Activity {
 				// Get arg
 				String passedArg = getIntent().getExtras().getString("nextArg");
 				final String exercise = exerciseTextView.getText().toString();
-
-				// Switch case for each subject
-				switch (AddExSubject.valueOf(passedArg)) {
-				case ADD_BASIC :
-					final Firebase ref = questionsRef.child("add/basic");
-					if (!exercise.contains("+")) { // Check that the exercise contains "+"
+                try {
+                    // Switch case for each subject
+                    switch (AddExSubject.valueOf(passedArg)) {
+                        case ADD_BASIC:
+                            final Firebase ref = questionsRef.child("add/basic");
+                            if (!exercise.contains("+")) { // Check that the exercise contains "+"
 
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 						alertDialogBuilder.setTitle(WRONG_EX_TITLE_PROP);
@@ -101,7 +103,7 @@ public class AddExScreenActivity extends Activity {
 							alertDialog.show();
 						}
 						 // Check that the exercise sum isn't less than 0 or more than 10
-						else if (((Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]) > 10)|| 
+						else if (((Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]) > 10)||
 								((Integer.parseInt(parts[0])<0)))||(Integer.parseInt(parts[1]) < 0)) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 									context);
@@ -182,6 +184,44 @@ public class AddExScreenActivity extends Activity {
 					final Firebase ref2 = questionsRef.child("add/upto20");
 					if (!exercise.contains("+")) { // Check that the exercise contains "+"
 
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                        context);
+                                alertDialogBuilder.setTitle("תרגיל שגוי");
+                                alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+                                alertDialog.show();
+                            } else {
+                                final String[] parts = exercise.split("[+]");
+                                // Check that the exercise contains 2 elements
+                                if (!(parts[0].matches("\\d+")) || !(parts[1].matches("\\d+"))) {
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                            context);
+                                    alertDialogBuilder.setTitle("תרגיל שגוי");
+                                    alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false)
+                                            .setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                                    AlertDialog alertDialog = alertDialogBuilder.create();
+                                    alertDialog.show();
+                                }
+                                // Check that the exercise sum isn't less than 0 or more than 20
+                                else if (Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]) > 20) {
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                            context);
+                                    alertDialogBuilder.setTitle("תרגיל לא מתאים");
+                                    alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                                    AlertDialog alertDialog = alertDialogBuilder.create();
+                                    alertDialog.show();
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 								context);
 						alertDialogBuilder.setTitle(WRONG_EX_TITLE_PROP);
@@ -193,7 +233,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog alertDialog = alertDialogBuilder.create();
 						alertDialog.show();
 					}
-					else {	
+					else {
 						final String[] parts = exercise.split("[+]");
 						// Check that the exercise contains 2 elements
 						if(!(parts[0].matches("\\d+"))||!(parts[1].matches("\\d+"))) {
@@ -303,7 +343,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog alertDialog = alertDialogBuilder.create();
 						alertDialog.show();
 					}
-					else {	
+					else {
 						final String[] parts = exercise.split("[+]");
 						// Check that the exercise contains 3 elements
 						if(parts.length!=3) {
@@ -317,7 +357,7 @@ public class AddExScreenActivity extends Activity {
 								}
 							});
 							AlertDialog alertDialog = alertDialogBuilder.create();
-							alertDialog.show();	
+							alertDialog.show();
 						}
 						else if(!(parts[0].matches("\\d+"))||!(parts[1].matches("\\d+"))||!(parts[2].matches("\\d+"))) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -433,7 +473,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog alertDialog = alertDialogBuilder.create();
 						alertDialog.show();
 					}
-					else {	
+					else {
 						// Check that the exercise contains "-"
 						final String[] parts = exercise.split("[-]");
 						// Check that the exercise contains 2 elements
@@ -546,7 +586,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog alertDialog = alertDialogBuilder.create();
 						alertDialog.show();
 					}
-					else {	
+					else {
 						final String[] parts = exercise.split("[-]");
 						// Check that the exercise contains 2 elements
 						if(!(parts[0].matches("\\d+"))||!(parts[1].matches("\\d+"))) {
@@ -660,7 +700,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog alertDialog = alertDialogBuilder.create();
 						alertDialog.show();
 					}
-					else {	
+					else {
 						final String[] parts = exercise.split("[-]");
 						// Check that the exercise contains 3 elements
 						if(parts.length!=3) {
@@ -672,7 +712,7 @@ public class AddExScreenActivity extends Activity {
 								}
 							});
 							AlertDialog alertDialog = alertDialogBuilder.create();
-							alertDialog.show();	
+							alertDialog.show();
 						}
 						else if(!(parts[0].matches("\\d+"))||!(parts[1].matches("\\d+"))||!(parts[2].matches("\\d+"))) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -780,7 +820,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog alertDialog = alertDialogBuilder.create();
 						alertDialog.show();
 					}
-					else {	
+					else {
 						// Check that the exercise contains 3 elements
 						String[] parts = exercise.split("\\b");
 						if(parts.length!=6) {
@@ -793,7 +833,7 @@ public class AddExScreenActivity extends Activity {
 								}
 							});
 							AlertDialog alertDialog = alertDialogBuilder.create();
-							alertDialog.show();	
+							alertDialog.show();
 						}
 						// Check that the exercise contains the right order of 3 elements between the operators
 						else if(!(parts[1].matches("\\d+"))||!(parts[3].matches("\\d+"))||!(parts[5].matches("\\d+"))) {

@@ -1,6 +1,8 @@
 package com.easymath.activities.train;
 
 import java.util.Locale;
+
+import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -132,16 +134,20 @@ public class TrainScreenActivity extends Activity  implements TextToSpeech.OnIni
 	 * @param context
 	 */
 	private void trainEnd(final Context context) {
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-				context);
-		alertDialogBuilder.setTitle("סוף תרגול");
-		alertDialogBuilder.setMessage(" היו לך " + Questions.points +" תשובות נכונות ").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				finish();
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
+		try {
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+					context);
+			alertDialogBuilder.setTitle("סוף תרגול");
+			alertDialogBuilder.setMessage(" היו לך " + Questions.points + " תשובות נכונות ").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					finish();
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 
@@ -151,47 +157,55 @@ public class TrainScreenActivity extends Activity  implements TextToSpeech.OnIni
 	 * @param ans
 	 */
 	private void wrongAnswer(final Context context, int ans) {
-		// Speak
-		t1.speak("Wrong!", TextToSpeech.QUEUE_FLUSH, null);
-		
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-		alertDialogBuilder.setTitle("תשובה שגויה");
-		alertDialogBuilder.setMessage("נסה שוב או קבל הסבר").setCancelable(false).setPositiveButton("נסה שוב",new DialogInterface.OnClickListener() {
-			// Positive Button acts as "try again"
-			public void onClick(DialogInterface dialog,int id) {
-				// Just close the alert to try again
-				Questions.numOfTry ++;
-				dialog.cancel();
-			}
-		}).setNegativeButton("הסבר על השאלה", new DialogInterface.OnClickListener() {
-			// Negative button acts as "Get explanation"
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// Redirect to Question Explanation Activity
-				Intent myIntent= null;
-				myIntent = new Intent(TrainScreenActivity.this, com.easymath.activities.QuestionExplanationActivity.class);
-				TrainScreenActivity.this.startActivity(myIntent);
-				
-				// When done with explaination
-				Questions.numOfQuestion++;
-				// Alert for going to the next question
-				AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(context);
-				alertDialogBuilder2.setTitle("שאלה הבאה");
-				alertDialogBuilder2.setMessage("מעבר לשאלה הבאה").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
-						dialog.cancel();
-						// Prepare next question
-						prepareNextQuestion(context);
+		try {
+			// Speak
+			t1.speak("Wrong!", TextToSpeech.QUEUE_FLUSH, null);
 
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			alertDialogBuilder.setTitle("תשובה שגויה");
+			alertDialogBuilder.setMessage("נסה שוב או קבל הסבר").setCancelable(false).setPositiveButton("נסה שוב", new DialogInterface.OnClickListener() {
+				// Positive Button acts as "try again"
+				public void onClick(DialogInterface dialog, int id) {
+					// Just close the alert to try again
+					Questions.numOfTry++;
+					dialog.cancel();
+				}
+			}).setNegativeButton("הסבר על השאלה", new DialogInterface.OnClickListener() {
+				// Negative button acts as "Get explanation"
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					try {
+						// Redirect to Question Explanation Activity
+						Intent myIntent = null;
+						myIntent = new Intent(TrainScreenActivity.this, com.easymath.activities.QuestionExplanationActivity.class);
+						TrainScreenActivity.this.startActivity(myIntent);
+
+						// When done with explaination
+						Questions.numOfQuestion++;
+						// Alert for going to the next question
+						AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(context);
+						alertDialogBuilder2.setTitle("שאלה הבאה");
+						alertDialogBuilder2.setMessage("מעבר לשאלה הבאה").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+								// Prepare next question
+								prepareNextQuestion(context);
+
+							}
+						});
+						AlertDialog alertDialog2 = alertDialogBuilder2.create();
+						alertDialog2.show();
+					}catch (Exception e){
+						e.printStackTrace();
 					}
-				});
-				AlertDialog alertDialog2 = alertDialogBuilder2.create();
-				alertDialog2.show();
 
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -199,19 +213,23 @@ public class TrainScreenActivity extends Activity  implements TextToSpeech.OnIni
 	 * @param context
 	 */
 	private void rightAnswer(final Context context) {
-		// Speak
-		t1.speak("Correct!", TextToSpeech.QUEUE_FLUSH, null);
-		// Alert
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-		alertDialogBuilder.setTitle("תשובה נכונה!");
-		alertDialogBuilder.setMessage("כל הכבוד!").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-				prepareNextQuestion(context);
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
+		try {
+			// Speak
+			t1.speak("Correct!", TextToSpeech.QUEUE_FLUSH, null);
+			// Alert
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			alertDialogBuilder.setTitle("תשובה נכונה!");
+			alertDialogBuilder.setMessage("כל הכבוד!").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					dialog.cancel();
+					prepareNextQuestion(context);
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 

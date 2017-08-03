@@ -1,5 +1,6 @@
 package com.easymath.activities;
 
+import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 import com.easymath.common.User;
 import com.easymath.util.FirebaseDBUtils;
 import com.easymath.R;
+
+import java.io.IOException;
 
 /**
  * Screen for connecting a student to a teacher (for teachers)
@@ -69,33 +72,41 @@ public class ConnectStudentsActivity extends Activity{
 							
 							// If the student is already connected to a teacher
 							if(!teacherName.equalsIgnoreCase("-1")) {
-								// Alert
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-								alertDialogBuilder.setTitle("תלמיד תפוס");
-								alertDialogBuilder.setMessage("התלמיד כבר מקושר למורה, אנא נסה תלמיד אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-													public void onClick(DialogInterface dialog,int id) {
-														dialog.cancel();
-													}
-												});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
+								try {
+									// Alert
+									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+									alertDialogBuilder.setTitle("תלמיד תפוס");
+									alertDialogBuilder.setMessage("התלמיד כבר מקושר למורה, אנא נסה תלמיד אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											dialog.cancel();
+										}
+									});
+									AlertDialog alertDialog = alertDialogBuilder.create();
+									alertDialog.show();
+								}catch (Exception e){
+									e.printStackTrace();
+								}
 							}
 							// Student is free to add
 							else {
-								// Set the value for "teacherName" of the student to the current teacher username
-								Firebase newRef = ref.child(studentNameString);
-								newRef.child("teacherName").setValue(User.userName);
-								
-								// Alert
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-								alertDialogBuilder.setTitle("התלמיד נוסף");
-								alertDialogBuilder.setMessage("התלמיד נוסף בהצלחה").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-													public void onClick(DialogInterface dialog,int id) {
-														dialog.cancel();
-													}
-												});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
+								try {
+									// Set the value for "teacherName" of the student to the current teacher username
+									Firebase newRef = ref.child(studentNameString);
+									newRef.child("teacherName").setValue(User.userName);
+
+									// Alert
+									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+									alertDialogBuilder.setTitle("התלמיד נוסף");
+									alertDialogBuilder.setMessage("התלמיד נוסף בהצלחה").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											dialog.cancel();
+										}
+									});
+									AlertDialog alertDialog = alertDialogBuilder.create();
+									alertDialog.show();
+								}catch (Exception e){
+									e.printStackTrace();
+								}
 							}
 							
 						}
@@ -104,11 +115,15 @@ public class ConnectStudentsActivity extends Activity{
 							// Alert
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 							alertDialogBuilder.setTitle("תלמיד לא קיים");
-							alertDialogBuilder.setMessage("התלמיד אינו קיים במערכת, אנא בדוק שהכנסת שם תקין").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-												public void onClick(DialogInterface dialog,int id) {
-													dialog.cancel();
-												}
-											});
+							try {
+								alertDialogBuilder.setMessage("התלמיד אינו קיים במערכת, אנא בדוק שהכנסת שם תקין").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 							AlertDialog alertDialog = alertDialogBuilder.create();
 							alertDialog.show();
 						}

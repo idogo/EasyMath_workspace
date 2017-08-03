@@ -42,10 +42,22 @@ import com.firebase.client.ValueEventListener;
 public class MainActivity extends Activity {
 
 	private static final String PASSWORD = "password";
-	private static final String NO_CONNECTION_TITLE_PROP = "login.noconnection.title";
-	private static final String NO_CONNECTION_MSG_PROP = "login.noconnection.msg";
-	private static final String WRONG_PW_TITLE_PROP = "login.wrongpassword.title";
-	private static final String WRONG_PW_MSG_PROP = "login.wrongpassword.msg";
+	private static final String NO_CONNECTION_TITLE = "login.noconnection.title";
+	private static final String NO_CONNECTION_MSG = "login.noconnection.msg";
+	private static final String WRONG_PW_TITLE = "login.wrongpassword.title";
+	private static final String WRONG_PW_MSG = "login.wrongpassword.msg";
+	private static final String LOGIN_SUCCESS_TITLE = "login.success.title";
+	private static final String LOGIN_SUCCESS_MSG = "login.success.msg";
+	private static final String WRONG_USER_TITLE = "login.wronguser.title";
+	private static final String WRONG_USER_MSG = "login.wronguser.msg";
+	private static final String USER_EXISTS_TITLE = "login.userexists.title";
+	private static final String USER_EXISTS_MSG = "login.userexists.msg";
+	private static final String INVALID_PW_TITLE = "login.invalidpassword.title";
+	private static final String INVALID_PW_MSG = "login.invalidpassword.msg";
+	private static final String WRONG_MATCH_PW_TITLE = "login.wrongmatchpassword.title";
+	private static final String WRONG_MATCH_PW_MSG = "login.wrongmatchpassword.msg";
+	private static final String REGISTER_SUCCESS_TITLE = "register.success.title";
+	private static final String REGISTER_SUCCESS_MSG = "register.success.msg";
 
 	@SuppressLint("NewApi")
 	@Override
@@ -73,8 +85,8 @@ public class MainActivity extends Activity {
 			if( activeNetworkInfo == null) {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						context);
-				alertDialogBuilder.setTitle(PropertiesUtil.getProperty(NO_CONNECTION_TITLE_PROP));
-				alertDialogBuilder.setMessage(PropertiesUtil.getProperty(NO_CONNECTION_MSG_PROP)).setCancelable(false).setPositiveButton(PropertiesUtil.getExitMessage(),new DialogInterface.OnClickListener() {
+				alertDialogBuilder.setTitle(PropertiesUtil.getProperty(NO_CONNECTION_TITLE));
+				alertDialogBuilder.setMessage(PropertiesUtil.getProperty(NO_CONNECTION_MSG)).setCancelable(false).setPositiveButton(PropertiesUtil.getExitMessage(),new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,int id) {
 						dialog.cancel();
 						finish();
@@ -100,7 +112,7 @@ public class MainActivity extends Activity {
 			Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
 			List<String> list = new ArrayList<String>();
 			list.add(Constants.TEACHER);
-			list.add(Constants.STDUENT);
+			list.add(Constants.STUDENT);
 			ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
 			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spinner.setAdapter(dataAdapter);
@@ -147,8 +159,8 @@ public class MainActivity extends Activity {
 									// If the passwird doesn't match
 									if (!password.equals(passwordString)) {
 										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-										alertDialogBuilder.setTitle(PropertiesUtil.getProperty(WRONG_PW_TITLE_PROP));
-										alertDialogBuilder.setMessage(PropertiesUtil.getProperty(WRONG_PW_MSG_PROP)).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+										alertDialogBuilder.setTitle(PropertiesUtil.getProperty(WRONG_PW_TITLE));
+										alertDialogBuilder.setMessage(PropertiesUtil.getProperty(WRONG_PW_MSG)).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog, int id) {
 												dialog.cancel();
 											}
@@ -159,11 +171,11 @@ public class MainActivity extends Activity {
 									// Password matches, connect
 									else {
 										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-										alertDialogBuilder.setTitle("התחברות");
-										alertDialogBuilder.setMessage("התחברת בהצלחה").setCancelable(false).setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+										alertDialogBuilder.setTitle(LOGIN_SUCCESS_TITLE);
+										alertDialogBuilder.setMessage(LOGIN_SUCCESS_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog, int id) {
 												// Redirect students to the student menu
-												if (userKind.equals("תלמיד")) {
+												if (userKind.equals(Constants.STUDENT)) {
 													User.userName = userNameString;
 													User.password = passwordString;
 													Intent myIntent = null;
@@ -189,8 +201,8 @@ public class MainActivity extends Activity {
 								// User doesn't exist
 								else {
 									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-									alertDialogBuilder.setTitle("משתמש לא קיים");
-									alertDialogBuilder.setMessage("שם משתמש לא קיים, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+									alertDialogBuilder.setTitle(WRONG_USER_TITLE);
+									alertDialogBuilder.setMessage(WRONG_USER_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
 										public void onClick(DialogInterface dialog, int id) {
 											dialog.cancel();
 										}
@@ -226,7 +238,7 @@ public class MainActivity extends Activity {
 					// Get user type from spinner (teacher or student)
 					final Spinner spinner = (Spinner) findViewById(R.id.spinnerStudTeacher);
 					final String userKind = spinner.getSelectedItem().toString();
-					if(userKind.equals("מורה")) {
+					if(userKind.equals(Constants.TEACHER)) {
 						objectRef = databaseReference.child("users/teachers");
 					}
 					else
@@ -238,96 +250,99 @@ public class MainActivity extends Activity {
 					objectRef.addListenerForSingleValueEvent(new ValueEventListener() {
 						@Override
 						public void onDataChange(DataSnapshot snapshot) {
+							try {
+								// Register the user
+								final String userNameString = userName.getText().toString().trim();
+								final String passwordString = password.getText().toString();
+								final String verifyPasswordString = verifyPassword.getText().toString();
 
-							// Register the user
-							final String userNameString = userName.getText().toString().trim();
-							final String passwordString = password.getText().toString();
-							final String verifyPasswordString = verifyPassword.getText().toString();
-
-							// If this username is already used
-							if(snapshot.child(userNameString).exists()){
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-								alertDialogBuilder.setTitle("משתמש קיים");
-								alertDialogBuilder.setMessage("שם המשתמש כבר קיים במערכת, אנא נסה שם אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,int id) {
-										dialog.cancel();
-									}
-								});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
-							}
-							// Username isn't used so we can register it
-							else {
-								// Validate passowrd
-								if (passwordString.length()==0) {
-									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-											context);
-									alertDialogBuilder.setTitle("סיסמא לא חוקית");
-									alertDialogBuilder.setMessage("סיסמא לא יכולה להיות ריקה, אנא הוסף סיסמא").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog,int id) {
-											dialog.cancel();
-										}
-									});
-									AlertDialog alertDialog = alertDialogBuilder.create();
-									alertDialog.show();
-								}
-								// Check that the passowrd equals verifyPassword
-								else if(!passwordString.equals(verifyPasswordString)) {
-									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-											context);
-									alertDialogBuilder.setTitle("אימות סיסמא שגוי");
-									alertDialogBuilder.setMessage("הסיסמא ואימות הסיסמא לא זהים").setCancelable(false)
-									.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog,int id) {
-											dialog.cancel();
-										}
-									});
-									AlertDialog alertDialog = alertDialogBuilder.create();
-									alertDialog.show();
-								}
-								// Everything is okay, register the new user
-								else {
-									// Create a DB user object
-									Firebase newRef = objectRef.child(userNameString);
-									// Set username and password
-									newRef.child("userName").setValue(userNameString);
-									newRef.child("password").setValue(passwordString);
-
-									// Extra information for students
-									if(userKind.equals("תלמיד")) {
-										newRef.child("teacherName").setValue("-1");
-										newRef.child("add").setValue("0");
-										newRef.child("sub").setValue("0");
-										newRef.child("numoftests").setValue("0");
-										newRef.child("avgtime").setValue("0");
-									}
-
-									// Alert
+								// If this username is already used
+								if (snapshot.child(userNameString).exists()) {
 									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-									alertDialogBuilder.setTitle("התחברות");
-									alertDialogBuilder.setMessage("המשתמש התווסף בהצלחה, התחברת למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog,int id) {
-											// Keep the connected user in the User stucture
-											User.userName = userNameString;
-											User.password = passwordString;
-											if (userKind.equals("תלמיד")){
-												// Redirect to MenuActivity for students
-												Intent myIntent = null;
-												MainActivity.this.finish();
-												myIntent = new Intent(MainActivity.this,MenuActivity.class);
-												MainActivity.this.startActivity(myIntent); }
-											else {
-												// Redirect to TeacherMenuActivity for teachers
-												Intent myIntent = null;
-												MainActivity.this.finish();
-												myIntent = new Intent(MainActivity.this,TeacherMenuActivity.class);
-												MainActivity.this.startActivity(myIntent);
-											}
+									alertDialogBuilder.setTitle(USER_EXISTS_TITLE);
+									alertDialogBuilder.setMessage(USER_EXISTS_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											dialog.cancel();
 										}
 									});
 									AlertDialog alertDialog = alertDialogBuilder.create();
 									alertDialog.show();
 								}
+								// Username isn't used so we can register it
+								else {
+									// Validate passowrd
+									if (passwordString.length() == 0) {
+										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+												context);
+										alertDialogBuilder.setTitle(INVALID_PW_TITLE);
+										alertDialogBuilder.setMessage(INVALID_PW_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+											public void onClick(DialogInterface dialog, int id) {
+												dialog.cancel();
+											}
+										});
+										AlertDialog alertDialog = alertDialogBuilder.create();
+										alertDialog.show();
+									}
+									// Check that the passowrd equals verifyPassword
+									else if (!passwordString.equals(verifyPasswordString)) {
+										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+												context);
+										alertDialogBuilder.setTitle(WRONG_MATCH_PW_TITLE);
+										alertDialogBuilder.setMessage(WRONG_MATCH_PW_MSG).setCancelable(false)
+												.setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+													public void onClick(DialogInterface dialog, int id) {
+														dialog.cancel();
+													}
+												});
+										AlertDialog alertDialog = alertDialogBuilder.create();
+										alertDialog.show();
+									}
+									// Everything is okay, register the new user
+									else {
+										// Create a DB user object
+										Firebase newRef = objectRef.child(userNameString);
+										// Set username and password
+										newRef.child("userName").setValue(userNameString);
+										newRef.child("password").setValue(passwordString);
+
+										// Extra information for students
+										if (userKind.equals(Constants.STUDENT)) {
+											newRef.child("teacherName").setValue("-1");
+											newRef.child("add").setValue("0");
+											newRef.child("sub").setValue("0");
+											newRef.child("numoftests").setValue("0");
+											newRef.child("avgtime").setValue("0");
+										}
+
+										// Alert
+										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+										alertDialogBuilder.setTitle(REGISTER_SUCCESS_TITLE);
+										alertDialogBuilder.setMessage(REGISTER_SUCCESS_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+											public void onClick(DialogInterface dialog, int id) {
+												// Keep the connected user in the User stucture
+												User.userName = userNameString;
+												User.password = passwordString;
+												if (userKind.equals(Constants.STUDENT)) {
+													// Redirect to MenuActivity for students
+													Intent myIntent = null;
+													MainActivity.this.finish();
+													myIntent = new Intent(MainActivity.this, MenuActivity.class);
+													MainActivity.this.startActivity(myIntent);
+												} else {
+													// Redirect to TeacherMenuActivity for teachers
+													Intent myIntent = null;
+													MainActivity.this.finish();
+													myIntent = new Intent(MainActivity.this, TeacherMenuActivity.class);
+													MainActivity.this.startActivity(myIntent);
+												}
+											}
+										});
+										AlertDialog alertDialog = alertDialogBuilder.create();
+										alertDialog.show();
+									}
+								}
+							}catch (Exception e){
+								e.printStackTrace();
 							}
 						}
 						@Override
