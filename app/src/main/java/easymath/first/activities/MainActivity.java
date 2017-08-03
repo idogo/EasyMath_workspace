@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		//check
 		// Handle context
 		Firebase.setAndroidContext(this);
 		setContentView(R.layout.activity_main);
