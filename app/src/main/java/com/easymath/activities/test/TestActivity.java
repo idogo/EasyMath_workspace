@@ -40,7 +40,7 @@ public class TestActivity extends Activity{
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		alertDialogBuilder.setTitle("מבחן");
 		alertDialogBuilder.setMessage("עליך לענות כעת על 10 שאלות. בהצלחה!").setCancelable(false)
-		.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+		.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// After accepting the message, close the dialog and prepare the test
 				dialog.cancel();

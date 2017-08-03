@@ -2,7 +2,9 @@ package com.easymath.activities;
 
 import java.io.IOException;
 import java.util.Random;
+import java.util.concurrent.Exchanger;
 
+import com.easymath.util.PropertiesUtil;
 import com.firebase.client.Firebase;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -126,18 +128,21 @@ public class QuestionExplanationActivity extends Activity{
 		
 		// Split the numbers in the question
 		final String[] parts = exercise.getText().toString().split("[-]");
-	
-		// Alert with game rules
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-		alertDialogBuilder.setTitle("עזרה");
-		alertDialogBuilder.setMessage("במשחק זה עלייך לפוצץ את מספר הבלונים שצריך להחסיר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
-	
+
+		try {
+			// Alert with game rules
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			alertDialogBuilder.setTitle("עזרה");
+			alertDialogBuilder.setMessage("במשחק זה עלייך לפוצץ את מספר הבלונים שצריך להחסיר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					dialog.cancel();
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		// Remember the amount of balloons in the Questions structure
 		Questions.questionExplanationVar = Integer.parseInt(parts[0]);
 		
@@ -217,34 +222,44 @@ public class QuestionExplanationActivity extends Activity{
 				if(Questions.questionExplanationVar == TestActivity.getAns(exercise.getText().toString())) {
 					// If it's the end of the question
 					if(!firstHalf) {
-						// Alert and finish
-						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-						alertDialogBuilder.setMessage(" התשובה הנכונה היא " + Questions.ans).setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,int id) {
-								finish();
-							}
-						});
-						AlertDialog alertDialog = alertDialogBuilder.create();
-						alertDialog.show();
+						try {
+							// Alert and finish
+							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+							alertDialogBuilder.setMessage(" התשובה הנכונה היא " + Questions.ans).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									finish();
+								}
+							});
+							AlertDialog alertDialog = alertDialogBuilder.create();
+							alertDialog.show();
+						}catch (Exception e){
+							e.printStackTrace();
+						}
 					}
-					else{ // There is 1 more half
-						// Alert and go to next half explanation
-						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-						alertDialogBuilder.setMessage(" התשובה הנכונה היא " + TestActivity.getAns(exercise.getText().toString())).setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,int id) {
-								// Get second half
-								String[] secondHalfQuestion =  Questions.question.split("\\b");
-								// The second half is the sum of the first half and parts 4,5
-								String halfExercise = Questions.questionExplanationVar + secondHalfQuestion[4] +secondHalfQuestion[5];
-								// Show the question
-								exercise.setText(halfExercise);
-								// Start another game for the second half with "false" for the boolean firstHalf
-								// (Add game because this part was Sub game so next one must be Add)
-								visualizeAddGame(context, finish, exercise, false , true);
-							}
-						});
-						AlertDialog alertDialog = alertDialogBuilder.create();
-						alertDialog.show();
+					else{
+
+						try {
+							// There is 1 more half
+							// Alert and go to next half explanation
+							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+							alertDialogBuilder.setMessage(" התשובה הנכונה היא " + TestActivity.getAns(exercise.getText().toString())).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									// Get second half
+									String[] secondHalfQuestion = Questions.question.split("\\b");
+									// The second half is the sum of the first half and parts 4,5
+									String halfExercise = Questions.questionExplanationVar + secondHalfQuestion[4] + secondHalfQuestion[5];
+									// Show the question
+									exercise.setText(halfExercise);
+									// Start another game for the second half with "false" for the boolean firstHalf
+									// (Add game because this part was Sub game so next one must be Add)
+									visualizeAddGame(context, finish, exercise, false, true);
+								}
+							});
+							AlertDialog alertDialog = alertDialogBuilder.create();
+							alertDialog.show();
+						}catch (Exception e){
+							e.printStackTrace();
+						}
 					}
 				}
 			}
@@ -312,32 +327,40 @@ public class QuestionExplanationActivity extends Activity{
 					if(Questions.questionExplanationVar == TestActivity.getAns(exercise.getText().toString())) {
 						// If it's the end of the question
 						if(!firstHalf) {
-							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-							alertDialogBuilder.setMessage(" התשובה הנכונה היא " + Questions.ans).setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,int id) {
-									// finish
-									finish();
-								}
-						});
-						AlertDialog alertDialog = alertDialogBuilder.create();
-						alertDialog.show();
+							try {
+								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+								alertDialogBuilder.setMessage(" התשובה הנכונה היא " + Questions.ans).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int id) {
+										// finish
+										finish();
+									}
+								});
+								AlertDialog alertDialog = alertDialogBuilder.create();
+								alertDialog.show();
+							}catch (Exception e){
+								e.printStackTrace();
+							}
 					}
 					else { // There is one more half
 						// Alert and go to next half explanation
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(	context);
-						alertDialogBuilder.setMessage(" התשובה של החלק הראשון היא " + TestActivity.getAns(exercise.getText().toString())).setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,int id) {
-								// Show the question
-								String[] secondHalfQuestion =  Questions.question.split("\\b");
-								String halfExercise = Questions.questionExplanationVar + secondHalfQuestion[4] +secondHalfQuestion[5];
-								exercise.setText(halfExercise);
-								// Start another game for the second half with "false" for the boolean firstHalf
-								// (Add game because this part was Sub game so next one must be Add)
-								visualizeAddGame(context, finish, exercise, false , true);
+							try {
+								alertDialogBuilder.setMessage(" התשובה של החלק הראשון היא " + TestActivity.getAns(exercise.getText().toString())).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int id) {
+										// Show the question
+										String[] secondHalfQuestion = Questions.question.split("\\b");
+										String halfExercise = Questions.questionExplanationVar + secondHalfQuestion[4] + secondHalfQuestion[5];
+										exercise.setText(halfExercise);
+										// Start another game for the second half with "false" for the boolean firstHalf
+										// (Add game because this part was Sub game so next one must be Add)
+										visualizeAddGame(context, finish, exercise, false, true);
+									}
+								});
+								AlertDialog alertDialog = alertDialogBuilder.create();
+								alertDialog.show();
+							}catch (Exception e){
+								e.printStackTrace();
 							}
-						});
-						AlertDialog alertDialog = alertDialogBuilder.create();
-						alertDialog.show();
 						}
 					}
 				}
@@ -372,12 +395,15 @@ public class QuestionExplanationActivity extends Activity{
 		else {
 			alertDialogBuilder.setMessage("במשחק זה עלייך לגרור את כל הפרפרים לפרח. מתחת לפרח נספרים הפרפרים שהגיעו").setCancelable(false);
 		}
-		
-		alertDialogBuilder.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-			}
-		});
+		try {
+			alertDialogBuilder.setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					dialog.cancel();
+				}
+			});
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
 
@@ -447,7 +473,7 @@ public class QuestionExplanationActivity extends Activity{
 				p.addRule(RelativeLayout.BELOW , imageView.getId());
 				p.addRule(RelativeLayout.ALIGN_LEFT);
 			}
-			
+
 			// Show image
 			imageView = new ImageView(context);
 			imageView.setId(i);
@@ -455,27 +481,27 @@ public class QuestionExplanationActivity extends Activity{
 			if(i <= Integer.parseInt(parts[0])) {
 				if(randomPic == 1)
 					imageView.setImageResource(R.drawable.a);
-				else 
-					imageView.setImageResource(R.drawable.b1);	
-			} 
+				else
+					imageView.setImageResource(R.drawable.b1);
+			}
 			else {// If this image represents the second number in the question (different color balloon)
 				if(Questions.subject.equals("add")) {
 					if (randomPic == 1)
 						imageView.setImageResource(R.drawable.b);
-					else 
+					else
 						imageView.setImageResource(R.drawable.b2);
 				}
 				else { // If this image represents the third number in the question (different color balloon)
 					if( i<= Integer.parseInt(parts[1])+Integer.parseInt(parts[0]) ) {
 						if(randomPic == 1)
 							imageView.setImageResource(R.drawable.b);
-						else 
+						else
 							imageView.setImageResource(R.drawable.b2);
 					}
 					else { // If this image represents the forth number in the question (different color balloon)
 						if(randomPic == 1)
 							imageView.setImageResource(R.drawable.c);
-						else 
+						else
 							imageView.setImageResource(R.drawable.b3);
 					}
 				}
@@ -498,7 +524,7 @@ public class QuestionExplanationActivity extends Activity{
 						return false;
 					}
 				}
-			}); 
+			});
 		}
 		
 		// Show question text
@@ -567,31 +593,40 @@ public class QuestionExplanationActivity extends Activity{
 							// If the question is finished
 							if(!firstHalf) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-							alertDialogBuilder.setMessage(" התשובה הנכונה היא " + Questions.ans).setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,int id) {
-									finish();
+								try {
+									alertDialogBuilder.setMessage(" התשובה הנכונה היא " + Questions.ans).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int id) {
+											finish();
+										}
+									});
+								}catch (Exception e){
+									e.printStackTrace();
 								}
-							});
 							AlertDialog alertDialog = alertDialogBuilder.create();
 							alertDialog.show();
 							}
-							else { // There is one more half
-								// Alert and go to next half explanation
-								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-								alertDialogBuilder.setMessage(" התשובה של החלק הראשון היא " + TestActivity.getAns(exercise.getText().toString())).setCancelable(false)
-								.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,int id) {
-										// Show the question
-										String[] secondHalfQuestion =  Questions.question.split("\\b");
-										String halfExercise = Questions.questionExplanationVar + secondHalfQuestion[4] +secondHalfQuestion[5];
-										exercise.setText(halfExercise);
-										// Start another game for the second half with "false" for the boolean firstHalf
-										// (Sub game because this part was Add game so next one must be Sub)
-										visualizeSubGame(context, finish, exercise, false ,true);
-									}
-								});
-								AlertDialog alertDialog = alertDialogBuilder.create();
-								alertDialog.show();
+							else {
+								try {
+									// There is one more half
+									// Alert and go to next half explanation
+									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+									alertDialogBuilder.setMessage(" התשובה של החלק הראשון היא " + TestActivity.getAns(exercise.getText().toString())).setCancelable(false)
+											.setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+												public void onClick(DialogInterface dialog, int id) {
+													// Show the question
+													String[] secondHalfQuestion = Questions.question.split("\\b");
+													String halfExercise = Questions.questionExplanationVar + secondHalfQuestion[4] + secondHalfQuestion[5];
+													exercise.setText(halfExercise);
+													// Start another game for the second half with "false" for the boolean firstHalf
+													// (Sub game because this part was Add game so next one must be Sub)
+													visualizeSubGame(context, finish, exercise, false, true);
+												}
+											});
+									AlertDialog alertDialog = alertDialogBuilder.create();
+									alertDialog.show();
+								}catch (Exception e){
+									e.printStackTrace();
+								}
 								
 							}
 						}

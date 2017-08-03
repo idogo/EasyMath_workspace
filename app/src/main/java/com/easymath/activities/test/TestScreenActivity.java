@@ -3,6 +3,7 @@ package com.easymath.activities.test;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import com.easymath.util.PropertiesUtil;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 
@@ -29,7 +30,16 @@ import com.easymath.R;
  */
 public class TestScreenActivity extends Activity  implements TextToSpeech.OnInitListener{
 
+	private static final String RIGHT_ANSWER_TITLE = "test.right.answer.title";
+	private static final String RIGHT_ANSWER_MSG = "test.right.answer.msg";
+	private static final String WRONG_ANSWER_TITLE = "test.wrong.answer.title";
+	private static final String WRONG_ANSWER_MSG = "test.wrong.answer.msg";
+	private static final String FINISH_TITLE = "test.finish.title";
+	private static final String FINISH_MSG1 = "test.finish.msg1";
+	private static final String FINISH_MSG2 = "test.finish.msg2";
+
 	TextToSpeech t1;
+
 	
 	 @Override
      public void onInit(int status) {
@@ -174,37 +184,45 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 	 * Speak "Correct!"
 	 */
 	private void rightAnswer(final Context context) {
-		t1.speak("Correct!", TextToSpeech.QUEUE_FLUSH, null);
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-				context);
-		alertDialogBuilder.setTitle("תשובה נכונה!");
-		alertDialogBuilder.setMessage("כל הכבוד!").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-				prepareNextQuestion(context);
+		try {
+			t1.speak("Correct!", TextToSpeech.QUEUE_FLUSH, null);
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+					context);
+			alertDialogBuilder.setTitle(RIGHT_ANSWER_TITLE);
+			alertDialogBuilder.setMessage(RIGHT_ANSWER_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					dialog.cancel();
+					prepareNextQuestion(context);
 
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * Speak "Wrong!"
 	 */
 	private void wrongAnswer(final Context context , int ans) {
-		t1.speak("Wrong!", TextToSpeech.QUEUE_FLUSH, null);
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-		alertDialogBuilder.setTitle("אופס");
-		alertDialogBuilder.setMessage("תשובה שגויה ").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				dialog.cancel();
-				prepareNextQuestion(context);
+		try {
+			t1.speak("Wrong!", TextToSpeech.QUEUE_FLUSH, null);
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			alertDialogBuilder.setTitle(WRONG_ANSWER_TITLE);
+			alertDialogBuilder.setMessage(WRONG_ANSWER_MSG).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					dialog.cancel();
+					prepareNextQuestion(context);
 
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -250,19 +268,23 @@ public class TestScreenActivity extends Activity  implements TextToSpeech.OnInit
 	 * Alerts the number of correct answers and redirects to TestEndActivity
 	 */
 	private void testEnd(final Context context) {
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-		alertDialogBuilder.setTitle("סוף מבחן");
-		alertDialogBuilder.setMessage(" היו לך " + Questions.points +" תשובות נכונות ").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {
-				// Redirect to TestEndActivity
-				Intent myIntent= null;
-				myIntent = new Intent(TestScreenActivity.this, com.easymath.activities.test.TestEndActivity.class);
-				TestScreenActivity.this.startActivity(myIntent);
-				finish();
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
+		try {
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+			alertDialogBuilder.setTitle(FINISH_TITLE);
+			alertDialogBuilder.setMessage(FINISH_MSG1 + Questions.points + FINISH_MSG2).setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					// Redirect to TestEndActivity
+					Intent myIntent = null;
+					myIntent = new Intent(TestScreenActivity.this, com.easymath.activities.test.TestEndActivity.class);
+					TestScreenActivity.this.startActivity(myIntent);
+					finish();
+				}
+			});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }

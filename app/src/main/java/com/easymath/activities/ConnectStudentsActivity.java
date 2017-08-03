@@ -72,7 +72,7 @@ public class ConnectStudentsActivity extends Activity{
 								// Alert
 								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 								alertDialogBuilder.setTitle("תלמיד תפוס");
-								alertDialogBuilder.setMessage("התלמיד כבר מקושר למורה, אנא נסה תלמיד אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+								alertDialogBuilder.setMessage("התלמיד כבר מקושר למורה, אנא נסה תלמיד אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 													public void onClick(DialogInterface dialog,int id) {
 														dialog.cancel();
 													}
@@ -89,7 +89,7 @@ public class ConnectStudentsActivity extends Activity{
 								// Alert
 								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 								alertDialogBuilder.setTitle("התלמיד נוסף");
-								alertDialogBuilder.setMessage("התלמיד נוסף בהצלחה").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+								alertDialogBuilder.setMessage("התלמיד נוסף בהצלחה").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 													public void onClick(DialogInterface dialog,int id) {
 														dialog.cancel();
 													}
@@ -104,7 +104,7 @@ public class ConnectStudentsActivity extends Activity{
 							// Alert
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 							alertDialogBuilder.setTitle("תלמיד לא קיים");
-							alertDialogBuilder.setMessage("התלמיד אינו קיים במערכת, אנא בדוק שהכנסת שם תקין").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("התלמיד אינו קיים במערכת, אנא בדוק שהכנסת שם תקין").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 												public void onClick(DialogInterface dialog,int id) {
 													dialog.cancel();
 												}

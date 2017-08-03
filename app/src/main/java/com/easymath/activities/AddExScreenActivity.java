@@ -69,7 +69,7 @@ public class AddExScreenActivity extends Activity {
 
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 						alertDialogBuilder.setTitle("תרגיל שגוי");
-						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,int id) {
 								dialog.cancel();
 							}
@@ -83,7 +83,7 @@ public class AddExScreenActivity extends Activity {
 						if(!(parts[0].matches("\\d+"))||!(parts[1].matches("\\d+"))) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
-							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -97,7 +97,7 @@ public class AddExScreenActivity extends Activity {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 									context);
 							alertDialogBuilder.setTitle("תרגיל לא מתאים");
-							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -122,7 +122,7 @@ public class AddExScreenActivity extends Activity {
 											AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 													context);
 											alertDialogBuilder.setTitle("תרגיל קיים");
-											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 												public void onClick(DialogInterface dialog,int id) {
 													dialog.cancel();
 												}
@@ -150,7 +150,7 @@ public class AddExScreenActivity extends Activity {
 										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 												context);
 										alertDialogBuilder.setTitle("תרגיל נוסף");
-										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog,int id) {
 												dialog.cancel();
 											}
@@ -176,7 +176,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 								context);
 						alertDialogBuilder.setTitle("תרגיל שגוי");
-						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,int id) {
 								dialog.cancel();
 							}
@@ -192,7 +192,7 @@ public class AddExScreenActivity extends Activity {
 									context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
 							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false)
-							.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -205,7 +205,7 @@ public class AddExScreenActivity extends Activity {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 									context);
 							alertDialogBuilder.setTitle("תרגיל לא מתאים");
-							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -233,7 +233,7 @@ public class AddExScreenActivity extends Activity {
 											AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 													context);
 											alertDialogBuilder.setTitle("תרגיל קיים");
-											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 												public void onClick(DialogInterface dialog,int id) {
 													dialog.cancel();
 												}
@@ -261,7 +261,7 @@ public class AddExScreenActivity extends Activity {
 										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 												context);
 										alertDialogBuilder.setTitle("תרגיל נוסף");
-										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog,int id) {
 												dialog.cancel();
 											}
@@ -286,7 +286,7 @@ public class AddExScreenActivity extends Activity {
 
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 						alertDialogBuilder.setTitle("תרגיל שגוי");
-						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								dialog.cancel();
 							}
@@ -302,7 +302,7 @@ public class AddExScreenActivity extends Activity {
 									context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
 							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false)
-							.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -315,7 +315,7 @@ public class AddExScreenActivity extends Activity {
 									context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
 							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false)
-							.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -329,7 +329,7 @@ public class AddExScreenActivity extends Activity {
 									context);
 							alertDialogBuilder.setTitle("תרגיל לא מתאים");
 							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false)
-							.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -358,7 +358,7 @@ public class AddExScreenActivity extends Activity {
 													context);
 											alertDialogBuilder.setTitle("תרגיל קיים");
 											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false)
-											.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+											.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 												public void onClick(DialogInterface dialog,int id) {
 													dialog.cancel();
 												}
@@ -386,7 +386,7 @@ public class AddExScreenActivity extends Activity {
 												context);
 										alertDialogBuilder.setTitle("תרגיל נוסף");
 										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false)
-										.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog,int id) {
 												dialog.cancel();
 											}
@@ -416,7 +416,7 @@ public class AddExScreenActivity extends Activity {
 								context);
 						alertDialogBuilder.setTitle("תרגיל שגוי");
 						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false)
-						.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+						.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,int id) {
 								dialog.cancel();
 							}
@@ -431,7 +431,7 @@ public class AddExScreenActivity extends Activity {
 						if(!(parts[0].matches("\\d+"))||!(parts[1].matches("\\d+"))) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
-							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -445,7 +445,7 @@ public class AddExScreenActivity extends Activity {
 									context);
 							alertDialogBuilder.setTitle("תרגיל לא מתאים");
 							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false)
-							.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -473,7 +473,7 @@ public class AddExScreenActivity extends Activity {
 													context);
 											alertDialogBuilder.setTitle("תרגיל קיים");
 											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false)
-											.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+											.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 												public void onClick(DialogInterface dialog,int id) {
 													dialog.cancel();
 												}
@@ -501,7 +501,7 @@ public class AddExScreenActivity extends Activity {
 												context);
 										alertDialogBuilder.setTitle("תרגיל נוסף");
 										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false)
-										.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog,int id) {
 												dialog.cancel();
 											}
@@ -529,7 +529,7 @@ public class AddExScreenActivity extends Activity {
 					if (!exercise.contains("-")) {
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 						alertDialogBuilder.setTitle("תרגיל שגוי");
-						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,int id) {
 								dialog.cancel();
 							}
@@ -545,7 +545,7 @@ public class AddExScreenActivity extends Activity {
 									context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
 							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false)
-							.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -559,7 +559,7 @@ public class AddExScreenActivity extends Activity {
 									context);
 							alertDialogBuilder.setTitle("תרגיל לא מתאים");
 							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false)
-							.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -587,7 +587,7 @@ public class AddExScreenActivity extends Activity {
 													context);
 											alertDialogBuilder.setTitle("תרגיל קיים");
 											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false)
-											.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+											.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 												public void onClick(DialogInterface dialog,int id) {
 													dialog.cancel();
 												}
@@ -615,7 +615,7 @@ public class AddExScreenActivity extends Activity {
 												context);
 										alertDialogBuilder.setTitle("תרגיל נוסף");
 										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false)
-										.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog,int id) {
 												dialog.cancel();
 											}
@@ -643,7 +643,7 @@ public class AddExScreenActivity extends Activity {
 					if (!exercise.contains("-")) {
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 						alertDialogBuilder.setTitle("תרגיל שגוי");
-						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,int id) {
 								dialog.cancel();
 							}
@@ -657,7 +657,7 @@ public class AddExScreenActivity extends Activity {
 						if(parts.length!=3) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
-							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -669,7 +669,7 @@ public class AddExScreenActivity extends Activity {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 									context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
-							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -681,7 +681,7 @@ public class AddExScreenActivity extends Activity {
 						else if  ((Integer.parseInt(parts[0]) - Integer.parseInt(parts[1]) - Integer.parseInt(parts[2])< 0) || (Integer.parseInt(parts[0]) > 20)) {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 							alertDialogBuilder.setTitle("תרגיל לא מתאים");
-							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -707,7 +707,7 @@ public class AddExScreenActivity extends Activity {
 											found = true;
 											AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 											alertDialogBuilder.setTitle("תרגיל קיים");
-											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+											alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 												public void onClick(DialogInterface dialog,int id) {
 													dialog.cancel();
 												}
@@ -733,7 +733,7 @@ public class AddExScreenActivity extends Activity {
 										newRef.child("ans4").setValue(list.get(2).toString());
 										AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 										alertDialogBuilder.setTitle("תרגיל נוסף");
-										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+										alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog,int id) {
 												dialog.cancel();
 											}
@@ -763,7 +763,7 @@ public class AddExScreenActivity extends Activity {
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 								context);
 						alertDialogBuilder.setTitle("תרגיל שגוי");
-						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+						alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,int id) {
 								dialog.cancel();
 							}
@@ -778,7 +778,7 @@ public class AddExScreenActivity extends Activity {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 									context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
-							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -791,7 +791,7 @@ public class AddExScreenActivity extends Activity {
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 									context);
 							alertDialogBuilder.setTitle("תרגיל שגוי");
-							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+							alertDialogBuilder.setMessage("תרגיל לא נכתב טוב, אנא נסה שוב").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
 									dialog.cancel();
 								}
@@ -807,7 +807,7 @@ public class AddExScreenActivity extends Activity {
 								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 										context);
 								alertDialogBuilder.setTitle("תרגיל לא מתאים");
-								alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+								alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,int id) {
 										dialog.cancel();
 									}
@@ -820,7 +820,7 @@ public class AddExScreenActivity extends Activity {
 									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 											context);
 									alertDialogBuilder.setTitle("תרגיל לא מתאים");
-									alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+									alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 										public void onClick(DialogInterface dialog,int id) {
 											dialog.cancel();
 										}
@@ -846,7 +846,7 @@ public class AddExScreenActivity extends Activity {
 													AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 															context);
 													alertDialogBuilder.setTitle("תרגיל קיים");
-													alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+													alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 														public void onClick(DialogInterface dialog,int id) {
 															dialog.cancel();
 														}
@@ -872,7 +872,7 @@ public class AddExScreenActivity extends Activity {
 												newRef.child("ans4").setValue(list.get(2).toString());
 												AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 												alertDialogBuilder.setTitle("תרגיל נוסף");
-												alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+												alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 													public void onClick(DialogInterface dialog,int id) {
 														dialog.cancel();
 													}
@@ -894,7 +894,7 @@ public class AddExScreenActivity extends Activity {
 							if(Integer.parseInt(parts[1])-Integer.parseInt(parts[3])<0){
 								AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 								alertDialogBuilder.setTitle("תרגיל לא מתאים");
-								alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+								alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,int id) {
 										dialog.cancel();
 									}
@@ -906,7 +906,7 @@ public class AddExScreenActivity extends Activity {
 								if(Integer.parseInt(parts[1])-Integer.parseInt(parts[3]) + Integer.parseInt(parts[5])>20) {
 									AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 									alertDialogBuilder.setTitle("תרגיל לא מתאים");
-									alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+									alertDialogBuilder.setMessage("התרגיל לא מתאים לרמה זאת , אנא נסה תרגיל אחר").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 										public void onClick(DialogInterface dialog,int id) {
 											dialog.cancel();
 										}
@@ -932,7 +932,7 @@ public class AddExScreenActivity extends Activity {
 													found = true;
 													AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 													alertDialogBuilder.setTitle("תרגיל קיים");
-													alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false)	.setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+													alertDialogBuilder.setMessage("תרגיל קיים במערכת , אנא נסה תרגיל אחר").setCancelable(false)	.setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 														public void onClick(DialogInterface dialog,int id) {
 															dialog.cancel();
 														}
@@ -958,7 +958,7 @@ public class AddExScreenActivity extends Activity {
 												newRef.child("ans4").setValue(list.get(2).toString());
 												AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 												alertDialogBuilder.setTitle("תרגיל נוסף");
-												alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton("אישור",new DialogInterface.OnClickListener() {
+												alertDialogBuilder.setMessage("התרגיל נוסף בהצלחה למערכת").setCancelable(false).setPositiveButton(PropertiesUtil.getOkMessage(),new DialogInterface.OnClickListener() {
 													public void onClick(DialogInterface dialog,int id) {
 														dialog.cancel();
 													}
